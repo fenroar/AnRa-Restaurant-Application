@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:padding="6dip" 
+    android:background="#f9fafb">
+
+    <TextView
+        android:id="@+id/left_text"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:gravity="center_vertical"
+        android:text="Name" 
+        android:textSize="18sp"
+        android:textColor="#1a1a1b"/>
+
+    <TextView 
+        android:id="@+id/right_text"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:singleLine="true"
+        android:text="Price"
+        android:textSize="18sp"
+        android:textColor="#1a1a1b" />
+
+</RelativeLayout>

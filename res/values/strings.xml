@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">ManageClientActivity!</string>
+    <string name="app_name">AnRa ManageClient</string>
+    <string name="meal_no_items">No Meals in Menu</string>
+	<string name="load">View Menu</string>
+</resources>
