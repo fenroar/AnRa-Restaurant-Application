@@ -2,19 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:baselineAligned="false"
     android:orientation="vertical" >
-
-    <Button
-        android:id="@+id/load_button"
+    
+    <Spinner 
+        android:id="@+id/main_spinner"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/load" />
-
-    <Button
-        android:id="@+id/button2"
+        android:prompt="@string/main_prompt"/>
+    
+    <Spinner 
+        android:id="@+id/type_spinner"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add_new_meal_to_database" />
-
+        android:prompt="@string/main_prompt"/>
 </LinearLayout>

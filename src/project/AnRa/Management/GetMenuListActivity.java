@@ -34,6 +34,7 @@ public class GetMenuListActivity extends Activity {
 	private ArrayList<Meal> mealList = new ArrayList<Meal>();
 	private MealAdapter mAdapter;
 
+	//Asynchronous Task to perform http get in background with interference with UI thread
 	private class Get extends AsyncTask<Void, Void, JsonArray> {
 		final NumberFormat df = NumberFormat.getCurrencyInstance(Locale.UK);
 		private ProgressDialog mProgressDialog = null;
@@ -54,7 +55,7 @@ public class GetMenuListActivity extends Activity {
 			HttpConnectionParams.setConnectionTimeout(httpParameters,
 					timeoutConnection);
 			final HttpGet httpget = new HttpGet(
-					"http://soba.cs.man.ac.uk/~sup9/AnRa/getMenuList.php");
+					"http://soba.cs.man.ac.uk/~sup9/AnRa/php/getMenuList.php");
 
 			HttpResponse result = null;
 			try {
@@ -130,8 +131,6 @@ public class GetMenuListActivity extends Activity {
 		final View v = li.inflate(R.layout.header, null);
 		lv.addHeaderView(v);
 		lv.setAdapter(mAdapter);
-		
-		
 		getMenulist();
 		
 

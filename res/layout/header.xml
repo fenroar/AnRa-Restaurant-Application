@@ -12,7 +12,7 @@
         android:layout_alignParentLeft="true"
         android:gravity="center_vertical"
         android:text="Name" 
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textColor="#1a1a1b"/>
 
     <TextView 
@@ -22,7 +22,7 @@
         android:layout_alignParentRight="true"
         android:singleLine="true"
         android:text="Price"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textColor="#1a1a1b" />
 
 </RelativeLayout>
