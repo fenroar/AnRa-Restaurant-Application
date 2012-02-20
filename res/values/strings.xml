@@ -3,8 +3,11 @@
     <string name="app_name">AnRa ManageClient</string>
     <string name="meal_no_items">No meals in Menu</string>
 	<string name="load">View menu</string>
+	<string name="selection">Select Main Type and Meal Type</string>
 	<string name="add_new_main">Add new main</string>
 	<string name="add_new_meal_type">Add new meal type</string>
+	<string name="add_new_main_type">Add new main type</string>
 	<string name="add_new_meal_to_database">Add new meal to database</string>
 	<string name="main_prompt">Pick main:</string>
+	<string name="price">Price: </string>
 </resources>
