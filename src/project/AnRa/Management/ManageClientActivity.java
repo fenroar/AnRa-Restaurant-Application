@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ManageClientActivity extends Activity {
 	// private static final String TAG =
@@ -40,16 +41,19 @@ public class ManageClientActivity extends Activity {
 		protected void onPostExecute(Boolean result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
+			// Load Menu
+			final Button loadMenuButton = (Button) findViewById(R.id.load_button);
+			// Add Menu Item
+			final Button addMenuItemButton = (Button) findViewById(R.id.button2);
+
 			if (result) {
 				/*
 				 * Add new button which does accesses the Add Menu Item manifest
 				 * (to be created) Android menu options to be implemented with
 				 * the add meal type/add new main strings
 				 */
-				// Load Menu
-				final Button loadMenuButton = (Button) findViewById(R.id.load_button);
-				// Add Menu Item
-				final Button addMenuItemButton = (Button) findViewById(R.id.button2);
+				loadMenuButton.setEnabled(true);
+				addMenuItemButton.setEnabled(true);
 
 				// loadMenuButton click listener
 				loadMenuButton.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +80,15 @@ public class ManageClientActivity extends Activity {
 							}
 						});
 			} else {
-				;
+				// disables buttons
+				loadMenuButton.setEnabled(false);
+				addMenuItemButton.setEnabled(false);
+
+				// dialog message to say that no connection to internet
+				Toast.makeText(
+						ManageClientActivity.this,
+						"Please connect to the internet to use this application.",
+						Toast.LENGTH_LONG).show();
 			}
 
 		}
