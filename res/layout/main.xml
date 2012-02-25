@@ -6,15 +6,14 @@
     android:orientation="vertical" >
 
     <Button
-        android:id="@+id/load_button"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/load" />
-
-    <Button
         android:id="@+id/button2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/add_new_meal_to_database" />
 
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/update_price" />
 </LinearLayout>

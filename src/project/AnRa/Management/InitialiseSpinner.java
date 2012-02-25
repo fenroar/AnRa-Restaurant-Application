@@ -68,7 +68,11 @@ public class InitialiseSpinner extends
 		// TODO Auto-generated method stub
 		mProgressDialog.dismiss();
 		Log.i(tag, "POSTEXECUTE: Result");
+		try {
 		spinner.setAdapter(result);
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		}
 		super.onPostExecute(result);
 
 	}// onPostExecute

@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/viewmenu"
+        android:title="View Menu"
+        android:icon="@drawable/menu2" />
+    
+    <item android:id="@+id/addtype"
+        android:title="Add Meal Type"
+        android:icon="@drawable/add1" />
+</menu>

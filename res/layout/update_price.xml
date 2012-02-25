@@ -5,21 +5,21 @@
     android:orientation="vertical" >
     
     <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/update_price"
+        android:textColor="#fbfbfb"
+        android:textSize="20sp" />
+    
+    <TextView
         android:id="@+id/textView0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/selection"
-        android:textSize="15sp"
-        android:textColor="#fbfbfb" /> 
+        android:text="@string/selected_meal" />
     
     <Spinner 
-        android:id="@+id/main_spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:prompt="@string/main_prompt"/>
-    
-    <Spinner 
-        android:id="@+id/type_spinner"
+        android:id="@+id/meal_spinner"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:prompt="@string/main_prompt"/>
@@ -31,19 +31,19 @@
         android:text="@string/price" />
 
     <EditText
-        android:id="@+id/price_field"
+        android:id="@+id/update_price_field"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="phone"
         android:numeric="decimal"
         android:maxLength="4" />
-    
+
     <Button
-        android:id="@+id/add_button1"
+        android:id="@+id/update_button"
         android:layout_width="120sp"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_marginBottom="0dip"
-        android:text="@string/add" />
+        android:text="@string/update" />
 
 </LinearLayout>

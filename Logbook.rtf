@@ -12,4 +12,16 @@ Buttons on main activity (ManageClientActivity were disabled if internet was off
 \
 When changing the items on the AddMenuItemActivity, check ID will not be correct since it's thread is being run slower than UI thread. Made a progressDialog pop up to prevent user from interacting with UI.\
 \
-When deleting any meal main or type, delete all menu items that include the main/type (since they won't exist anyway) because ID in menu items table doesn't change otherwise.}
+When deleting any meal main or type, delete all menu items that include the main/type (since they won't exist anyway) because ID in menu items table doesn't change otherwise.\
+\
+\
+Disabling screen orientation for consistent layout. While doing this, found out when changing the orientation of the screen when a message dialog pops up, it causes an illegal argument exception giving me another reason to disable changing the screen orientation.\
+\
+Getting rid of the buttons of less important features (Get Menu List) and putting them into a Menu.\
+\
+UPDATEPRICEACTIVITY\
+Rather than using a text box to allow user to input item they want to edit, put all available items in a spinner.\
+\
+Reusing InitialiseSpinner class rather than creating a new class to get these items on spinner. (REFACTOR).\
+\
+updateMenuItemPrice.php doesn't actually work :/}

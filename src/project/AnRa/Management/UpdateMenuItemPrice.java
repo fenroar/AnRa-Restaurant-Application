@@ -23,13 +23,13 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-public class AddMenuItemIntoDatabase extends
+public class UpdateMenuItemPrice extends
 		AsyncTask<String, Void, HttpResponse> {
 
 	private final Context mContext;
 	ProgressDialog mProgressDialog = null;
 
-	public AddMenuItemIntoDatabase(Context c) {
+	public UpdateMenuItemPrice(Context c) {
 		mContext = c;
 	}
 
@@ -39,7 +39,7 @@ public class AddMenuItemIntoDatabase extends
 		// "Add new meal to database button"
 		// so correct ID will be present when ID is finally changed
 		mProgressDialog = ProgressDialog.show(mContext, "Please Wait ...",
-				"Adding meal ...", true);
+				"Updating price ...", true);
 		super.onPreExecute();
 	}// onPreExecute
 
@@ -52,7 +52,7 @@ public class AddMenuItemIntoDatabase extends
 		HttpConnectionParams.setConnectionTimeout(httpParameters,
 				timeoutConnection);
 		final HttpPost httppost = new HttpPost(
-				"http://soba.cs.man.ac.uk/~sup9/AnRa/php/insertIntoMenuItemsDB.php");
+				"http://soba.cs.man.ac.uk/~sup9/AnRa/php/updateMenuItemPrice.php");
 
 		HttpResponse result = null;
 		try {
@@ -60,13 +60,7 @@ public class AddMenuItemIntoDatabase extends
 			nameValuePairs.add(new BasicNameValuePair("name", params[0]
 					.toString()));
 
-			nameValuePairs.add(new BasicNameValuePair("main_id", params[1]
-					.toString()));
-
-			nameValuePairs.add(new BasicNameValuePair("type_id", params[2]
-					.toString()));
-
-			nameValuePairs.add(new BasicNameValuePair("price", params[3]
+			nameValuePairs.add(new BasicNameValuePair("price", params[1]
 					.toString()));
 
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));

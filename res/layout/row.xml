@@ -11,7 +11,7 @@
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
         android:gravity="center_vertical"
-        android:textSize="12sp"
+        android:textSize="15sp"
         android:textColor="#fbfbfb" />
 
     <TextView 
@@ -20,7 +20,7 @@
         android:layout_height="fill_parent"
         android:layout_alignParentRight="true"
         android:singleLine="true"
-        android:textSize="12sp"
+        android:textSize="15sp"
         android:textColor="#fbfbfb" />
 
 </RelativeLayout>

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AnRa ManageClient</string>
+    
     <string name="meal_no_items">No meals in Menu</string>
-	<string name="load">View menu</string>
+	<string name="view_menu">View menu</string>
 	<string name="selection">Select Main Type and Meal Type</string>
 	<string name="add_new_main">Add new main</string>
 	<string name="add_new_meal_type">Add new meal type</string>
@@ -10,4 +11,21 @@
 	<string name="add_new_meal_to_database">Add new meal to database</string>
 	<string name="main_prompt">Pick main:</string>
 	<string name="price">Price: </string>
+	
+	<string name="update">Update</string>
+	<string name="update_price">Update Price</string>
+	<string name="updated_price">Updated Price:</string>
+	<string name="selected_meal">Meal</string>
+	
+	<string name="add_meal_type">Add new meal type</string>
+	<string name="add">Add</string>
+	<string name="name">Name:</string>
+	<string name="chicken">Chicken:</string>
+	<string name="beef">Beef:</string>
+	<string name="pork">Pork:</string>
+	<string name="prawn">Prawn:</string>
+	<string name="char_siu">Char siu:</string>
+	<string name="ham">Ham:</string>
+	<string name="king_prawn">King Prawn:</string>
+	<string name="default_grams">0</string>
 </resources>

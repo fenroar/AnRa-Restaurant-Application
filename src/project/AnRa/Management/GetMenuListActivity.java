@@ -133,6 +133,6 @@ public class GetMenuListActivity extends Activity {
 		lv.setAdapter(mAdapter);
 		getMenulist();
 		
-
 	}
+
 }

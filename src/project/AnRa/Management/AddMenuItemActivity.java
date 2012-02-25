@@ -105,6 +105,9 @@ public class AddMenuItemActivity extends Activity {
 
 				} catch (NumberFormatException e) {
 					e.printStackTrace();
+					Toast.makeText(AddMenuItemActivity.this,
+							"Price has to be a price format",
+							Toast.LENGTH_SHORT).show();
 				}
 
 			}
@@ -307,8 +310,8 @@ public class AddMenuItemActivity extends Activity {
 		public void onItemSelected(AdapterView<?> parent,
 				View selectedItemView, int position, long id) {
 			main = parent.getItemAtPosition(position).toString();
-			Toast.makeText(parent.getContext(), "The main selected is " + main,
-					Toast.LENGTH_SHORT).show();
+			//Toast.makeText(parent.getContext(), "The main selected is " + main,
+			//		Toast.LENGTH_SHORT).show();
 
 			new CheckIDs().execute("mainidcheck", main);
 
@@ -327,8 +330,8 @@ public class AddMenuItemActivity extends Activity {
 		public void onItemSelected(AdapterView<?> parent,
 				View selectedItemView, int position, long id) {
 			type = parent.getItemAtPosition(position).toString();
-			Toast.makeText(parent.getContext(), "The type selected is " + type,
-					Toast.LENGTH_SHORT).show();
+			//Toast.makeText(parent.getContext(), "The type selected is " + type,
+			//		Toast.LENGTH_SHORT).show();
 
 			new CheckIDs().execute("typeidcheck", type);
 
