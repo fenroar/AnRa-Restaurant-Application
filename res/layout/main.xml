@@ -16,4 +16,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/update_price" />
+    
+    <Button
+        android:id="@+id/base_price_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/change_base_price" />
 </LinearLayout>

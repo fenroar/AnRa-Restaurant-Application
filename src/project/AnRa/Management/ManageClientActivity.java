@@ -51,6 +51,8 @@ public class ManageClientActivity extends Activity {
 			final Button addMenuItemButton = (Button) findViewById(R.id.button2);
 			// Update Price
 			final Button updatePriceButton = (Button) findViewById(R.id.button1);
+			// Base Price
+			final Button basePriceButton = (Button) findViewById(R.id.base_price_button);
 
 			if (result) {
 				/*
@@ -61,6 +63,7 @@ public class ManageClientActivity extends Activity {
 
 				addMenuItemButton.setEnabled(true);
 				updatePriceButton.setEnabled(true);
+				basePriceButton.setEnabled(true);
 
 				// addMenuItemButton click listener
 				addMenuItemButton
@@ -89,11 +92,27 @@ public class ManageClientActivity extends Activity {
 								startActivity(myIntent);
 							}
 						});
+				
+				// basePriceButton click listener
+				basePriceButton
+						.setOnClickListener(new View.OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+								Intent myIntent = new Intent(
+										ManageClientActivity.this,
+										BasePriceActivity.class);
+								startActivity(myIntent);
+
+							}
+						});
 			} else {
 				// disables buttons
 
 				addMenuItemButton.setEnabled(false);
 				updatePriceButton.setEnabled(false);
+				basePriceButton.setEnabled(false);
 
 				// dialog message to say that no connection to internet
 				Toast.makeText(
@@ -152,6 +171,12 @@ public class ManageClientActivity extends Activity {
 				Intent getMenuIntent = new Intent(ManageClientActivity.this,
 						GetMenuListActivity.class);
 				startActivity(getMenuIntent);
+				break;
+
+			case R.id.addmain:
+				Intent addMainIntent = new Intent(ManageClientActivity.this,
+						AddMainActivity.class);
+				startActivity(addMainIntent);
 				break;
 
 			case R.id.addtype:

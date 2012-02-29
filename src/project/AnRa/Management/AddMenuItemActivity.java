@@ -3,6 +3,7 @@ package project.AnRa.Management;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,18 +23,13 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.JsonArray;
@@ -49,9 +45,6 @@ public class AddMenuItemActivity extends Activity {
 	String type;
 	Integer main_id = null;
 	Integer type_id = null;
-
-	private static boolean[] decComp = new boolean[3],
-			decimal = new boolean[3];
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -71,7 +64,7 @@ public class AddMenuItemActivity extends Activity {
 		final EditText priceEdit = (EditText) findViewById(R.id.price_field);
 		Button addButton = (Button) findViewById(R.id.add_button1);
 
-		setListeners(priceEdit, true, 5, 0);
+		new EditTextListeners().setListeners(priceEdit, true, 5, 0);
 
 		addButton.setOnClickListener(new View.OnClickListener() {
 
@@ -79,20 +72,20 @@ public class AddMenuItemActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				try {
-					double price = Double.parseDouble(priceEdit.getText()
+					BigDecimal price = new BigDecimal(priceEdit.getText()
 							.toString());
 
 					// price cannot exceed £1.00, else post message
-					if (price <= 1.00) {
+					if (price.doubleValue() <= 1.00) {
 						try {
-							
+
 							String name = spinner.getSelectedItem().toString()
 									+ " "
 									+ spinner2.getSelectedItem().toString();
 							new AddMenuItemIntoDatabase(
 									AddMenuItemActivity.this).execute(name,
 									main_id.toString(), type_id.toString(),
-									Double.toString(price));
+									price.toString());
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -113,85 +106,6 @@ public class AddMenuItemActivity extends Activity {
 			}
 		});
 
-	}
-
-	private void setListeners(EditText et, final boolean doesEdit,
-			final int len, final int index) {
-		TextView.OnEditorActionListener editListener = new TextView.OnEditorActionListener() {
-			@Override
-			public boolean onEditorAction(TextView v, int actionId,
-					KeyEvent event) {
-				if (actionId == EditorInfo.IME_NULL) {
-					if (doesEdit) {
-						if (v.getText().toString().equals(""))
-							v.setText("0.00");
-						else if (!decimal[index])
-							v.setText(v.getText().toString() + ".00");
-						else if (!decComp[index])
-							v.setText(v.getText().toString() + "0");
-					} else {
-						if (v.getText().toString().equals(""))
-							v.setText("0");
-					}
-				}
-				return true;
-			}
-		};
-		et.setOnEditorActionListener(editListener);
-		TextWatcher watcher = new TextWatcher() {
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before,
-					int count) {
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-			}
-
-			@Override
-			public void afterTextChanged(Editable s) {
-				String str = s.toString();
-				if (str.contains("."))
-					decimal[index] = true;
-				else
-					decimal[index] = false;
-				if (!decimal[index]) {
-					if (str.length() == len) {
-						if (str.charAt(str.length() - 1) == '.')
-							return;
-						s.clear();
-						final String st = str.substring(0, str.length() - 1);
-						s.append(st);
-					}
-				} else {
-					String a = str.substring(str.indexOf(".") + 1);
-					if (a.contains(".")) {
-						a.replace(".", "");
-						str = str.substring(0, str.length() - 1);
-						str.concat(a);
-						s.clear();
-						s.append(str);
-					}
-					if (a.length() != 2)
-						decComp[index] = false;
-					if (a.length() == 3) {
-						a = a.substring(0, 2);
-						str = str.substring(0, str.length() - 1);
-						str.concat(a);
-						s.clear();
-						s.append(str);
-						decComp[index] = true;
-					}
-					if (str.length() == (len + 3)) {
-						s.clear();
-						final String st = str.substring(0, str.length() - 1);
-						s.append(st);
-					}
-				}
-			}
-		};
-		et.addTextChangedListener(watcher);
 	}
 
 	// CheckIds
@@ -310,8 +224,9 @@ public class AddMenuItemActivity extends Activity {
 		public void onItemSelected(AdapterView<?> parent,
 				View selectedItemView, int position, long id) {
 			main = parent.getItemAtPosition(position).toString();
-			//Toast.makeText(parent.getContext(), "The main selected is " + main,
-			//		Toast.LENGTH_SHORT).show();
+			// Toast.makeText(parent.getContext(), "The main selected is " +
+			// main,
+			// Toast.LENGTH_SHORT).show();
 
 			new CheckIDs().execute("mainidcheck", main);
 
@@ -330,8 +245,9 @@ public class AddMenuItemActivity extends Activity {
 		public void onItemSelected(AdapterView<?> parent,
 				View selectedItemView, int position, long id) {
 			type = parent.getItemAtPosition(position).toString();
-			//Toast.makeText(parent.getContext(), "The type selected is " + type,
-			//		Toast.LENGTH_SHORT).show();
+			// Toast.makeText(parent.getContext(), "The type selected is " +
+			// type,
+			// Toast.LENGTH_SHORT).show();
 
 			new CheckIDs().execute("typeidcheck", type);
 

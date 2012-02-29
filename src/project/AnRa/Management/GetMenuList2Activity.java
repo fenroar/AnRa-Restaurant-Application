@@ -35,11 +35,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-public class GetMenuListActivity extends Activity {
+public class GetMenuList2Activity extends Activity {
 	private ArrayList<Meal> mealList = new ArrayList<Meal>();
 	private MealAdapter mAdapter;
 	private BigDecimal basePrice;
-	private String defaultUrl = "http://soba.cs.man.ac.uk/~sup9/AnRa/php/getMenuList.php";
+	private String defaultUrl = "http://soba.cs.man.ac.uk/~sup9/AnRa/php/getMenuList2.php";
 
 	// Asynchronous Task to perform http get in background with interference
 	// with UI thread
@@ -50,7 +50,7 @@ public class GetMenuListActivity extends Activity {
 		@Override
 		protected void onPreExecute() {
 			// TODO Auto-generated method stub
-			mProgressDialog = ProgressDialog.show(GetMenuListActivity.this,
+			mProgressDialog = ProgressDialog.show(GetMenuList2Activity.this,
 					"Please Wait ...", "Retrieving data ...", true);
 			super.onPreExecute();
 		}
@@ -140,7 +140,7 @@ public class GetMenuListActivity extends Activity {
 		final View v = li.inflate(R.layout.header, null);
 		lv.addHeaderView(v);
 		lv.setAdapter(mAdapter);
-		new GetBasePrice(GetMenuListActivity.this).execute();
+		new GetBasePrice(this).execute();
 
 	}
 
@@ -173,12 +173,12 @@ public class GetMenuListActivity extends Activity {
 
 		switch (item.getItemId()) {
 		case R.id.typefirst:
+			Intent mainFirstIntent = new Intent(GetMenuList2Activity.this,
+					GetMenuListActivity.class);
+			startActivity(mainFirstIntent);
 			break;
 
 		case R.id.mainfirst:
-			Intent mainFirstIntent = new Intent(GetMenuListActivity.this,
-					GetMenuList2Activity.class);
-			startActivity(mainFirstIntent);
 			break;
 
 		default:

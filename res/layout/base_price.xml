@@ -8,22 +8,10 @@
         android:id="@+id/textView0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/selection"
+        android:text="@string/base_price"
         android:textSize="20sp"
         android:textColor="#fbfbfb" /> 
     
-    <Spinner 
-        android:id="@+id/main_spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:prompt="@string/main_prompt"/>
-    
-    <Spinner 
-        android:id="@+id/type_spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:prompt="@string/main_prompt"/>
-
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -31,19 +19,18 @@
         android:text="@string/price" />
 
     <EditText
-        android:id="@+id/price_field"
+        android:id="@+id/edit_field"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="phone"
-        android:numeric="decimal"
-        android:maxLength="4" />
+        android:maxLength="5" />
     
     <Button
-        android:id="@+id/add_button1"
+        android:id="@+id/change_button"
         android:layout_width="120sp"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_marginBottom="0dip"
-        android:text="@string/add" />
+        android:text="@string/change" />
 
 </LinearLayout>

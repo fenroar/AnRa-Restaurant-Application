@@ -3,7 +3,11 @@
         android:title="View Menu"
         android:icon="@drawable/menu2" />
     
+    <item android:id="@+id/addmain"
+        android:title="Add Main"
+        android:icon="@drawable/add1" />
+    
     <item android:id="@+id/addtype"
-        android:title="Add Meal Type"
+        android:title="Add Type"
         android:icon="@drawable/add1" />
 </menu>

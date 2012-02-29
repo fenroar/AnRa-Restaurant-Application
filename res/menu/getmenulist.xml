@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/typefirst"
+        android:icon="@drawable/add1"
+        android:title="Type First"/>
+    <item
+        android:id="@+id/mainfirst"
+        android:icon="@drawable/add1"
+        android:title="Main First"/>
+
+</menu>

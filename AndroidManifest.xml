@@ -22,9 +22,12 @@
             </intent-filter>
         </activity>
         <activity android:name="GetMenuListActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="GetMenuList2Activity" android:screenOrientation="portrait"></activity>
         <activity android:name="AddMenuItemActivity" android:screenOrientation="portrait"></activity>
         <activity android:name="UpdatePriceActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="AddMainActivity" android:screenOrientation="portrait"></activity>
         <activity android:name="AddTypeActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="BasePriceActivity" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
