@@ -54,7 +54,7 @@ public class AddType extends
 
 		HttpResponse result = null;
 		try {
-			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 			nameValuePairs.add(new BasicNameValuePair("type_name", params[0]
 					.toString()));
 

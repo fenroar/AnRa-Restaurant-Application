@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.net.SocketTimeoutException;
-import java.text.DecimalFormat;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -20,7 +19,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 public class BasePrice extends AsyncTask<String, Void, HttpResponse> {
-	DecimalFormat df = new DecimalFormat("#.##");
 	private BigDecimal price;
 
 	private final Context mContext;

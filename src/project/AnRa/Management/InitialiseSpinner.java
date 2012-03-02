@@ -37,7 +37,7 @@ public class InitialiseSpinner extends
 		mContext = c;
 
 	}//Constructor
-	
+
 	@Override
 	protected void onPreExecute() {
 		// TODO Auto-generated method stub

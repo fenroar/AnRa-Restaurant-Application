@@ -38,8 +38,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 public class AddMenuItemActivity extends Activity {
-	private static final String url1 = "http://soba.cs.man.ac.uk/~sup9/AnRa/php/getMealMain.php";
-	private static final String url2 = "http://soba.cs.man.ac.uk/~sup9/AnRa/php/getMealType.php";
+	private static final String url1 = "http://soba.cs.man.ac.uk/~sup9/AnRa/php/getAllMealMain.php";
+	private static final String url2 = "http://soba.cs.man.ac.uk/~sup9/AnRa/php/getAllMealType.php";
 	final String tag = "AddMenuItemActivity";
 	String main;
 	String type;
@@ -55,9 +55,10 @@ public class AddMenuItemActivity extends Activity {
 		final Spinner spinner = (Spinner) this.findViewById(R.id.main_spinner);
 		final Spinner spinner2 = (Spinner) this.findViewById(R.id.type_spinner);
 
+		//Populate spinner widget with items from database
 		new InitialiseSpinner(spinner, this).execute(url1, "main_name");
 		new InitialiseSpinner(spinner2, this).execute(url2, "type_name");
-
+		
 		spinner.setOnItemSelectedListener(new MainSpinnerSelectedListener());
 		spinner2.setOnItemSelectedListener(new TypeSpinnerSelectedListener());
 
@@ -119,7 +120,7 @@ public class AddMenuItemActivity extends Activity {
 			// "Add new meal to database button"
 			// so correct ID will be present when ID is finally changed
 			mProgressDialog = ProgressDialog.show(AddMenuItemActivity.this,
-					"Please Wait ...", "Getting ID ...", true);
+					"Please Wait ...", "Loading ...", true);
 			super.onPreExecute();
 		}// onPreExecute
 
@@ -224,10 +225,7 @@ public class AddMenuItemActivity extends Activity {
 		public void onItemSelected(AdapterView<?> parent,
 				View selectedItemView, int position, long id) {
 			main = parent.getItemAtPosition(position).toString();
-			// Toast.makeText(parent.getContext(), "The main selected is " +
-			// main,
-			// Toast.LENGTH_SHORT).show();
-
+			Log.i("Step 1a","");
 			new CheckIDs().execute("mainidcheck", main);
 
 		}
@@ -245,10 +243,6 @@ public class AddMenuItemActivity extends Activity {
 		public void onItemSelected(AdapterView<?> parent,
 				View selectedItemView, int position, long id) {
 			type = parent.getItemAtPosition(position).toString();
-			// Toast.makeText(parent.getContext(), "The type selected is " +
-			// type,
-			// Toast.LENGTH_SHORT).show();
-
 			new CheckIDs().execute("typeidcheck", type);
 
 		}

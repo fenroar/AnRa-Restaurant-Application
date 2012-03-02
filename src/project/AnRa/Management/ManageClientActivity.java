@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -53,6 +54,10 @@ public class ManageClientActivity extends Activity {
 			final Button updatePriceButton = (Button) findViewById(R.id.button1);
 			// Base Price
 			final Button basePriceButton = (Button) findViewById(R.id.base_price_button);
+			// Edit Main
+			final Button editMainButton = (Button) findViewById(R.id.edit_main_button);
+			// Edit Type
+			final Button editTypeButton = (Button) findViewById(R.id.edit_type_button);
 
 			if (result) {
 				/*
@@ -64,6 +69,8 @@ public class ManageClientActivity extends Activity {
 				addMenuItemButton.setEnabled(true);
 				updatePriceButton.setEnabled(true);
 				basePriceButton.setEnabled(true);
+				editMainButton.setEnabled(true);
+				editTypeButton.setEnabled(true);
 
 				// addMenuItemButton click listener
 				addMenuItemButton
@@ -107,12 +114,41 @@ public class ManageClientActivity extends Activity {
 
 							}
 						});
+				
+				// editMainButton click listener
+				editMainButton
+						.setOnClickListener(new View.OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+								Log.i("Hello!", "World!");
+
+							}
+						});
+				
+				// editTypeButton click listener
+				editTypeButton
+						.setOnClickListener(new View.OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+								Intent myIntent = new Intent(
+										ManageClientActivity.this,
+										EditTypeActivity.class);
+								startActivity(myIntent);
+
+							}
+						});
 			} else {
 				// disables buttons
 
 				addMenuItemButton.setEnabled(false);
 				updatePriceButton.setEnabled(false);
 				basePriceButton.setEnabled(false);
+				editMainButton.setEnabled(false);
+				editTypeButton.setEnabled(false);
 
 				// dialog message to say that no connection to internet
 				Toast.makeText(

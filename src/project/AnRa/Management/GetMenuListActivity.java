@@ -20,7 +20,6 @@ import org.apache.http.params.HttpParams;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -40,6 +39,7 @@ public class GetMenuListActivity extends Activity {
 	private MealAdapter mAdapter;
 	private BigDecimal basePrice;
 	private String defaultUrl = "http://soba.cs.man.ac.uk/~sup9/AnRa/php/getMenuList.php";
+	private String url2 = "http://soba.cs.man.ac.uk/~sup9/AnRa/php/getMenuList2.php";
 
 	// Asynchronous Task to perform http get in background with interference
 	// with UI thread
@@ -143,24 +143,7 @@ public class GetMenuListActivity extends Activity {
 		new GetBasePrice(GetMenuListActivity.this).execute();
 
 	}
-
-	private final class GetBasePrice extends BasePrice {
-
-		public GetBasePrice(Context c) {
-			super(c);
-			// TODO Auto-generated constructor stub
-		}
-
-		@Override
-		protected void onPostExecute(HttpResponse r) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(r);
-			basePrice = getPrice();
-			getMenulist(defaultUrl);
-		}
-
-	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(final Menu menu) {
 		MenuInflater inflater = getMenuInflater();
@@ -173,12 +156,13 @@ public class GetMenuListActivity extends Activity {
 
 		switch (item.getItemId()) {
 		case R.id.typefirst:
+			mealList.clear();
+			new GetBasePrice(GetMenuListActivity.this).execute();
 			break;
 
 		case R.id.mainfirst:
-			Intent mainFirstIntent = new Intent(GetMenuListActivity.this,
-					GetMenuList2Activity.class);
-			startActivity(mainFirstIntent);
+			mealList.clear();
+			new GetBasePrice2(GetMenuListActivity.this).execute();
 			break;
 
 		default:
@@ -187,5 +171,35 @@ public class GetMenuListActivity extends Activity {
 		return true;
 
 	}// onOptionsItemSelected
+	
+	private final class GetBasePrice extends BasePrice {
+		public GetBasePrice(Context c) {
+			super(c);
+			// TODO Auto-generated constructor stub
+		}
+
+		@Override
+		protected void onPostExecute(HttpResponse r) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(r);
+			basePrice = getPrice();
+			getMenulist(defaultUrl);
+		}
+	}
+	
+	private final class GetBasePrice2 extends BasePrice {
+		public GetBasePrice2(Context c) {
+			super(c);
+			// TODO Auto-generated constructor stub
+		}
+
+		@Override
+		protected void onPostExecute(HttpResponse r) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(r);
+			basePrice = getPrice();
+			getMenulist(url2);
+		}
+	}
 
 }

@@ -28,6 +28,7 @@
         <activity android:name="AddMainActivity" android:screenOrientation="portrait"></activity>
         <activity android:name="AddTypeActivity" android:screenOrientation="portrait"></activity>
         <activity android:name="BasePriceActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="EditTypeActivity" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

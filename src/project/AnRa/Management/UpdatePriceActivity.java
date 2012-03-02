@@ -28,6 +28,7 @@ public class UpdatePriceActivity extends Activity {
 
 		// Fills spinner with existing meal items in database
 		new InitialiseSpinner(mealSpinner, this).execute(get_menu_url, "name");
+		
 
 		mealSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override
