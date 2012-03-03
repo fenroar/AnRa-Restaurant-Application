@@ -17,31 +17,31 @@ public class MealMain {
 		return mainName;
 	}
 
-	public String getchickenAmount() {
+	public String getChicken() {
 		return chickenAmount;
 	}
 
-	public String getGreenPepperAmount() {
+	public String getBeef() {
 		return beefAmount;
 	}
 
-	public String getporkAmount() {
+	public String getPorkAmount() {
 		return porkAmount;
 	}
 
-	public String getprawnAmount() {
+	public String getPrawnAmount() {
 		return prawnAmount;
 	}
 
-	public String getcharSiuAmount() {
+	public String getCharSiuAmount() {
 		return charSiuAmount;
 	}
 
-	public String gethamAmount() {
+	public String getHamAmount() {
 		return hamAmount;
 	}
 
-	public String getkingPrawnAmount() {
+	public String getKingPrawnAmount() {
 		return kingPrawnAmount;
 	}
 

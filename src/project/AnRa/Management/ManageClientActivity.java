@@ -7,7 +7,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -26,7 +25,6 @@ public class ManageClientActivity extends Activity {
 
 		@Override
 		protected Boolean doInBackground(Void... params) {
-			// TODO Auto-generated method stub
 
 			ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 			NetworkInfo netInfo = cm.getActiveNetworkInfo();
@@ -38,13 +36,13 @@ public class ManageClientActivity extends Activity {
 
 		@Override
 		protected void onCancelled() {
-			// TODO Auto-generated method stub
+
 			super.onCancelled();
 		}
 
 		@Override
 		protected void onPostExecute(Boolean result) {
-			// TODO Auto-generated method stub
+
 			mIsConnected = result;
 			super.onPostExecute(result);
 
@@ -78,7 +76,7 @@ public class ManageClientActivity extends Activity {
 
 							@Override
 							public void onClick(View v) {
-								// TODO Auto-generated method stub
+
 								Intent myIntent = new Intent(
 										ManageClientActivity.this,
 										AddMenuItemActivity.class);
@@ -91,56 +89,51 @@ public class ManageClientActivity extends Activity {
 				updatePriceButton
 						.setOnClickListener(new View.OnClickListener() {
 							@Override
-							public void onClick(View v) { // TODO Auto-generated
-															// method
+							public void onClick(View v) { 
 								Intent myIntent = new Intent(
 										ManageClientActivity.this,
 										UpdatePriceActivity.class);
 								startActivity(myIntent);
 							}
 						});
-				
+
 				// basePriceButton click listener
-				basePriceButton
-						.setOnClickListener(new View.OnClickListener() {
+				basePriceButton.setOnClickListener(new View.OnClickListener() {
 
-							@Override
-							public void onClick(View v) {
-								// TODO Auto-generated method stub
-								Intent myIntent = new Intent(
-										ManageClientActivity.this,
-										BasePriceActivity.class);
-								startActivity(myIntent);
+					@Override
+					public void onClick(View v) {
 
-							}
-						});
-				
+						Intent myIntent = new Intent(ManageClientActivity.this,
+								BasePriceActivity.class);
+						startActivity(myIntent);
+
+					}
+				});
+
 				// editMainButton click listener
-				editMainButton
-						.setOnClickListener(new View.OnClickListener() {
+				editMainButton.setOnClickListener(new View.OnClickListener() {
 
-							@Override
-							public void onClick(View v) {
-								// TODO Auto-generated method stub
-								Log.i("Hello!", "World!");
+					@Override
+					public void onClick(View v) {
+						Intent myIntent = new Intent(ManageClientActivity.this,
+								EditMainChooserActivity.class);
+						startActivity(myIntent);
 
-							}
-						});
-				
+					}
+				});
+
 				// editTypeButton click listener
-				editTypeButton
-						.setOnClickListener(new View.OnClickListener() {
+				editTypeButton.setOnClickListener(new View.OnClickListener() {
 
-							@Override
-							public void onClick(View v) {
-								// TODO Auto-generated method stub
-								Intent myIntent = new Intent(
-										getApplicationContext(),
-										EditTypeChooserActivity.class);
-								startActivity(myIntent);
+					@Override
+					public void onClick(View v) {
 
-							}
-						});
+						Intent myIntent = new Intent(ManageClientActivity.this,
+								EditTypeChooserActivity.class);
+						startActivity(myIntent);
+
+					}
+				});
 			} else {
 				// disables buttons
 
@@ -162,7 +155,7 @@ public class ManageClientActivity extends Activity {
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+
 		super.onResume();
 		if (check == null) {
 			check = new Check();
@@ -174,7 +167,6 @@ public class ManageClientActivity extends Activity {
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
 		// interrupt check
 		if (check != null) {
 			check.cancel(true);

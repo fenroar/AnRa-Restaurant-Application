@@ -14,12 +14,13 @@ import android.widget.Spinner;
 import com.google.gson.JsonArray;
 
 public class EditTypeChooserActivity extends Activity {
+	private static final int REQUEST_CODE = 10;
 	private static final String getAllMealTypeUrl = "http://soba.cs.man.ac.uk/~sup9/AnRa/php/getAllMealType.php";
 	private String getMealTypeUrl = "http://soba.cs.man.ac.uk/~sup9/AnRa/php/getMealType.php";
 	final String tag = "EditTypeActivity";
 	private MealType mealType;
 	String onion, green_pepper, mushroom, beansprouts, pineapple, ginger,
-			spring_onion, babycorn, bamboo_shoot;
+			spring_onion, babycorn, bamboo_shoot, type;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -31,8 +32,10 @@ public class EditTypeChooserActivity extends Activity {
 				.findViewById(R.id.type_spinner);
 
 		// Populate spinner widget with items from database
-		new InitialiseSpinner(typeSpinner, this).execute(getAllMealTypeUrl, "type_name");
-		typeSpinner.setOnItemSelectedListener(new TypeSpinnerSelectedListener());
+		new InitialiseSpinner(typeSpinner, this).execute(getAllMealTypeUrl,
+				"type_name");
+		typeSpinner
+				.setOnItemSelectedListener(new TypeSpinnerSelectedListener());
 
 		Button editButton = (Button) findViewById(R.id.edit_type_button);
 		editButton.setOnClickListener(new View.OnClickListener() {
@@ -40,7 +43,7 @@ public class EditTypeChooserActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// Starting new intent
-				Intent myIntent = new Intent(getApplicationContext(),
+				Intent myIntent = new Intent(EditTypeChooserActivity.this,
 						EditTypeActivity.class);
 
 				// Sending selected type of meal to EditTypeActivity
@@ -56,17 +59,16 @@ public class EditTypeChooserActivity extends Activity {
 				myIntent.putExtra("corn", mealType.getBabyCornAmount());
 				myIntent.putExtra("bamboo", mealType.getBambooShootAmount());
 				Log.e("n", typeSpinner.getSelectedItem().toString());
-				startActivity(myIntent);
+				startActivityForResult(myIntent, REQUEST_CODE);
 			}
 		});
 
 	}
 
-	private final class GetMealType extends FillEditText {
+	private final class GetMealType extends GetMealTypeInformation {
 
 		public GetMealType(Context c) {
 			super(c);
-			// TODO Auto-generated constructor stub
 		}
 
 		@Override
@@ -83,15 +85,30 @@ public class EditTypeChooserActivity extends Activity {
 		@Override
 		public void onItemSelected(AdapterView<?> parent,
 				View selectedItemView, int position, long id) {
-			String type = parent.getItemAtPosition(position).toString();
+			type = parent.getItemAtPosition(position).toString();
 			Log.e("EditType", "Getting MealType...");
-			new GetMealType(EditTypeChooserActivity.this).execute(getMealTypeUrl, type);
+			Log.e("Default type is:", type);
+			new GetMealType(EditTypeChooserActivity.this).execute(
+					getMealTypeUrl, type);
 			Log.e("EditType", "MealType has changed");
 		}
 
 		@Override
 		public void onNothingSelected(AdapterView<?> arg0) {
 			// Do nothing
+		}
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode,
+			Intent intent) {
+		super.onActivityResult(requestCode, resultCode, intent);
+
+		if (requestCode == REQUEST_CODE) {
+			Log.i("EDITTYPE", "Back button does this function here");
+			new GetMealType(EditTypeChooserActivity.this).execute(
+					getMealTypeUrl, type);
+
 		}
 	}
 }

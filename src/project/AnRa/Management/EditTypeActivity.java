@@ -67,21 +67,24 @@ public class EditTypeActivity extends Activity {
 							green_pepper, mushroom, beansprouts, pineapple,
 							ginger, spring_onion, baby_corn, bamboo_shoot);
 					
-					Intent backIntent = new Intent(getApplicationContext(),
-							EditTypeChooserActivity.class);
-					startActivity(backIntent);
-					
-					
- 
+					//Intent backIntent = new Intent(getApplicationContext(),
+					//		EditTypeChooserActivity.class);
+					//startActivity(backIntent);
 
 				} catch (NumberFormatException e) {
 					e.printStackTrace();
 					Toast.makeText(EditTypeActivity.this,
 							"Number format error", Toast.LENGTH_SHORT).show();
 				}
-
 			}
 		});
 
+	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		finish();
 	}
 }

@@ -36,4 +36,21 @@ BasePrice\
 edit text with current base price is not in a price format.\
 change the use of double/decimal format to use bigdecimal\
 \
-refactoring some code by making setListeners external}
+refactoring some code by making setListeners external\
+\
+Do edit/deletes main/types \
+Drop all meal items that have that (DO THIS BY THIS WEEKEND)\
+\
+\
+\
+\
+TO DO: Fix Check_ID in add new menu item activity\
+In initialise spinner, we have a hashmap that contains the name and key values of each item in database. In MapSpinner, extend initialise spinner and have a function that returns the hashmap. Create instance of MapSpinner.\
+\
+^ can't use hashmap on initialise spinner class, since two other classes that use the initialise spinner class have different types in hashmap (value).\
+\
+EditType had problems\
+Kept crashing since it wouldn't initialise the values from database correctly (Null pointer exception). When trying to declare an object type, would not let me retrieve values from edit box if changed (problem with find R.id blah blah)\
+Worked around by having a spinner selector in a previous activity which passes string values carrying selected record information to edittypeactivity.\
+\
+need to fix the end activity so that it refreshes the chooseActivity page}

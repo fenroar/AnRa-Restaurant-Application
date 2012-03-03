@@ -1,179 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:stretchColumns="1" >
 
-    <TextView
-        android:id="@+id/textView0"
-        android:layout_width="wrap_content"
+    <TableLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/edit_meal_main"
-        android:textColor="#fbfbfb"
-        android:textSize="20sp" />
-
-    <TableRow>
+        android:stretchColumns="1" >
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/textView0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/name"
-            android:textSize="18sp" />
+            android:text="@string/edit_meal_main"
+            android:textColor="#fbfbfb"
+            android:textSize="20sp" />
 
-        <Spinner
-            android:id="@+id/name_spinner"
-            android:layout_width="fill_parent"
+        <TableRow>
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/main_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:inputType="text"
+                android:maxLength="20"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chicken"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/chicken_field"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:gravity="right"
+                android:hint="@string/default_grams"
+                android:inputType="phone"
+                android:maxLength="3" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/beef"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/beef_field"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:gravity="right"
+                android:hint="@string/default_grams"
+                android:inputType="phone"
+                android:maxLength="3" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pork"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/pork_field"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:gravity="right"
+                android:hint="@string/default_grams"
+                android:inputType="phone"
+                android:maxLength="3" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/prawn"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/prawn_field"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:gravity="right"
+                android:hint="@string/default_grams"
+                android:inputType="phone"
+                android:maxLength="3" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/char_siu"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/charsiu_field"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:gravity="right"
+                android:hint="@string/default_grams"
+                android:inputType="phone"
+                android:maxLength="3" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ham"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/ham_field"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:gravity="right"
+                android:hint="@string/default_grams"
+                android:inputType="phone"
+                android:maxLength="3" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/king_prawn"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/kingprawn_field"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:gravity="right"
+                android:hint="@string/default_grams"
+                android:inputType="phone"
+                android:maxLength="3" />
+        </TableRow>
+
+        <Button
+            android:id="@+id/edit_main_button"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:gravity="right"
-            android:inputType="text"
-            android:maxLength="20" />
-    </TableRow>
+            android:text="@string/change" />
+    </TableLayout>
 
-    <TableRow>
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/chicken"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/chicken_field"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:digits="0123456789"
-            android:gravity="right"
-            android:hint="@string/default_grams"
-            android:inputType="phone"
-            android:maxLength="3" />
-    </TableRow>
-
-    <TableRow>
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/beef"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/beef_field"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:digits="0123456789"
-            android:gravity="right"
-            android:hint="@string/default_grams"
-            android:inputType="phone"
-            android:maxLength="3" />
-    </TableRow>
-
-    <TableRow>
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/pork"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/pork_field"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:digits="0123456789"
-            android:gravity="right"
-            android:hint="@string/default_grams"
-            android:inputType="phone"
-            android:maxLength="3" />
-    </TableRow>
-
-    <TableRow>
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/prawn"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/prawn_field"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:digits="0123456789"
-            android:gravity="right"
-            android:hint="@string/default_grams"
-            android:inputType="phone"
-            android:maxLength="3" />
-    </TableRow>
-
-    <TableRow>
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/char_siu"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/charsiu_field"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:digits="0123456789"
-            android:gravity="right"
-            android:hint="@string/default_grams"
-            android:inputType="phone"
-            android:maxLength="3" />
-    </TableRow>
-
-    <TableRow>
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/ham"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/ham_field"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:digits="0123456789"
-            android:gravity="right"
-            android:hint="@string/default_grams"
-            android:inputType="phone"
-            android:maxLength="3" />
-    </TableRow>
-
-    <TableRow>
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/king_prawn"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/kingprawn_field"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:digits="0123456789"
-            android:gravity="right"
-            android:hint="@string/default_grams"
-            android:inputType="phone"
-            android:maxLength="3" />
-    </TableRow>
-
-    <Button
-        android:id="@+id/edit_main_button"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:text="@string/change" />
-
-</TableLayout>
+</ScrollView>
