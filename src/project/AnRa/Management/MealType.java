@@ -5,59 +5,59 @@ public class MealType {
 	final private String typeName;
 
 	// Amount of ingredient used in grams
-	final private int onionAmount;
-	final private int green_pepperAmount;
-	final private int mushroomAmount;
-	final private int beansproutsAmount;
-	final private int pineappleAmount;
-	final private int gingerAmount;
-	final private int spring_onionAmount;
-	final private int babycornAmount;
-	final private int bamboo_shootAmount;
+	final private String onionAmount;
+	final private String green_pepperAmount;
+	final private String mushroomAmount;
+	final private String beansproutsAmount;
+	final private String pineappleAmount;
+	final private String gingerAmount;
+	final private String spring_onionAmount;
+	final private String babycornAmount;
+	final private String bamboo_shootAmount;
 
 	public String getMealType() {
 		return typeName;
 	}
 
-	public int getOnionAmount() {
+	public String getOnionAmount() {
 		return onionAmount;
 	}
 
-	public int getGreenPepperAmount() {
+	public String getGreenPepperAmount() {
 		return green_pepperAmount;
 	}
 
-	public int getMushroomAmount() {
+	public String getMushroomAmount() {
 		return mushroomAmount;
 	}
 
-	public int getBeansproutsAmount() {
+	public String getBeansproutsAmount() {
 		return beansproutsAmount;
 	}
 
-	public int getPineappleAmount() {
+	public String getPineappleAmount() {
 		return pineappleAmount;
 	}
 
-	public int getGingerAmount() {
+	public String getGingerAmount() {
 		return gingerAmount;
 	}
 
-	public int getSpringOnionAmount() {
+	public String getSpringOnionAmount() {
 		return spring_onionAmount;
 	}
 
-	public int getBabyCornAmount() {
+	public String getBabyCornAmount() {
 		return babycornAmount;
 	}
 
-	public int getBambooShootAmount() {
+	public String getBambooShootAmount() {
 		return bamboo_shootAmount;
 	}
 
-	public MealType(final String name, final int onion, final int green_pepper,
-			final int mushroom, final int beansprouts, final int pineapple, final int ginger,
-			final int spring_onion, final int babycorn, final int bambooshoots) {
+	public MealType(final String name, final String onion, final String green_pepper,
+			final String mushroom, final String beansprouts, final String pineapple, final String ginger,
+			final String spring_onion, final String babycorn, final String bambooshoots) {
 		typeName = name;
 		onionAmount = onion;
 		green_pepperAmount = green_pepper;

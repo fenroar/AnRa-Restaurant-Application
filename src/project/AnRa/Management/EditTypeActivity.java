@@ -1,39 +1,50 @@
 package project.AnRa.Management;
 
-import java.math.BigDecimal;
-
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class EditTypeActivity extends Activity {
-	private static final String url = "http://soba.cs.man.ac.uk/~sup9/AnRa/php/getAllMealType.php";
-	final String tag = "EditTypeActivity";
-	String type;
-	Integer type_id = null;
 
-	@Override
+	private String onion, green_pepper, mushroom, beansprouts, pineapple,
+			ginger, spring_onion, baby_corn, bamboo_shoot;
+
 	public void onCreate(Bundle savedInstanceState) {
-
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.edit_meal_type);
 
-		final Spinner typeSpinner = (Spinner) this
-				.findViewById(R.id.type_spinner);
+		TextView typeName = (TextView) findViewById(R.id.type_name);
 
-		// Populate spinner widget with items from database
-		new InitialiseSpinner(typeSpinner, this).execute(url, "type_name");
+		Intent i = getIntent();
+		final String type = i.getStringExtra("type");
 
-		typeSpinner
-				.setOnItemSelectedListener(new TypeSpinnerSelectedListener());
+		final EditText onionEdit = (EditText) findViewById(R.id.onion_field);
+		onionEdit.setText(i.getStringExtra("onion"));
+		final EditText greenEdit = (EditText) findViewById(R.id.green_pepper_field);
+		greenEdit.setText(i.getStringExtra("green"));
+		final EditText muEdit = (EditText) findViewById(R.id.mushroom_field);
+		muEdit.setText(i.getStringExtra("mushroom"));
+		final EditText bsEdit = (EditText) findViewById(R.id.beansprouts_field);
+		bsEdit.setText(i.getStringExtra("bs"));
+		final EditText piEdit = (EditText) findViewById(R.id.pineapple_field);
+		piEdit.setText(i.getStringExtra("pi"));
+		final EditText ginEdit = (EditText) findViewById(R.id.ginger_field);
+		ginEdit.setText(i.getStringExtra("ging"));
+		final EditText springEdit = (EditText) findViewById(R.id.spring_onion_field);
+		springEdit.setText(i.getStringExtra("spring"));
+		final EditText babyEdit = (EditText) findViewById(R.id.babycorn_field);
+		babyEdit.setText(i.getStringExtra("corn"));
+		final EditText bambooEdit = (EditText) findViewById(R.id.bamboo_shoot_field);
+		bambooEdit.setText(i.getStringExtra("bamboo"));
+		Log.e("Second Screen", "" + type);
+		typeName.setText(type);
 
-		final EditText priceEdit = (EditText) findViewById(R.id.onion_field);
 		Button editButton = (Button) findViewById(R.id.edit_type_button);
 
 		editButton.setOnClickListener(new View.OnClickListener() {
@@ -42,48 +53,35 @@ public class EditTypeActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				try {
-					BigDecimal price = new BigDecimal(priceEdit.getText()
-							.toString());
+					onion = onionEdit.getText().toString();
+					green_pepper = greenEdit.getText().toString();
+					mushroom = muEdit.getText().toString();
+					beansprouts = bsEdit.getText().toString();
+					pineapple = piEdit.getText().toString();
+					ginger = ginEdit.getText().toString();
+					spring_onion = springEdit.getText().toString();
+					baby_corn = babyEdit.getText().toString();
+					bamboo_shoot = bambooEdit.getText().toString();
 
-					// price cannot exceed £1.00, else post message
-					if (price.doubleValue() <= 1.00) {
-						try {
-
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}// if
-					else {
-						Toast.makeText(EditTypeActivity.this,
-								"Price has to be equal or less than £1.00",
-								Toast.LENGTH_SHORT).show();
-					}
+					new EditType(EditTypeActivity.this).execute(type, onion,
+							green_pepper, mushroom, beansprouts, pineapple,
+							ginger, spring_onion, baby_corn, bamboo_shoot);
+					
+					Intent backIntent = new Intent(getApplicationContext(),
+							EditTypeChooserActivity.class);
+					startActivity(backIntent);
+					
+					
+ 
 
 				} catch (NumberFormatException e) {
 					e.printStackTrace();
 					Toast.makeText(EditTypeActivity.this,
-							"Price has to be a price format",
-							Toast.LENGTH_SHORT).show();
+							"Number format error", Toast.LENGTH_SHORT).show();
 				}
 
 			}
 		});
 
 	}
-
-	private final class TypeSpinnerSelectedListener implements
-			OnItemSelectedListener {
-
-		@Override
-		public void onItemSelected(AdapterView<?> parent,
-				View selectedItemView, int position, long id) {
-			type = parent.getItemAtPosition(position).toString();
-		}
-
-		@Override
-		public void onNothingSelected(AdapterView<?> arg0) {
-			// Do nothing
-		}
-	}
-
 }

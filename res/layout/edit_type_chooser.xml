@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="1" >
+
+    <TextView
+        android:id="@+id/textView0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_meal_type"
+        android:textColor="#fbfbfb"
+        android:textSize="20sp" />
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/type_spinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:inputType="text"
+            android:maxLength="20" />
+    </TableRow>
+
+    <Button
+        android:id="@+id/edit_type_button"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="@string/change" />
+
+</TableLayout>

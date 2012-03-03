@@ -225,7 +225,6 @@ public class AddMenuItemActivity extends Activity {
 		public void onItemSelected(AdapterView<?> parent,
 				View selectedItemView, int position, long id) {
 			main = parent.getItemAtPosition(position).toString();
-			Log.i("Step 1a","");
 			new CheckIDs().execute("mainidcheck", main);
 
 		}

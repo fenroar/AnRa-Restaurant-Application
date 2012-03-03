@@ -135,8 +135,8 @@ public class ManageClientActivity extends Activity {
 							public void onClick(View v) {
 								// TODO Auto-generated method stub
 								Intent myIntent = new Intent(
-										ManageClientActivity.this,
-										EditTypeActivity.class);
+										getApplicationContext(),
+										EditTypeChooserActivity.class);
 								startActivity(myIntent);
 
 							}
