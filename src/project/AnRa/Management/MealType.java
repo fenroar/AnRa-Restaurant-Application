@@ -5,6 +5,7 @@ public class MealType {
 	final private String typeName;
 
 	// Amount of ingredient used in grams
+	final private String typeId;
 	final private String onionAmount;
 	final private String green_pepperAmount;
 	final private String mushroomAmount;
@@ -55,9 +56,10 @@ public class MealType {
 		return bamboo_shootAmount;
 	}
 
-	public MealType(final String name, final String onion, final String green_pepper,
+	public MealType(final String id, final String name, final String onion, final String green_pepper,
 			final String mushroom, final String beansprouts, final String pineapple, final String ginger,
 			final String spring_onion, final String babycorn, final String bambooshoots) {
+		typeId = id;
 		typeName = name;
 		onionAmount = onion;
 		green_pepperAmount = green_pepper;
@@ -68,6 +70,11 @@ public class MealType {
 		spring_onionAmount = spring_onion;
 		babycornAmount = babycorn;
 		bamboo_shootAmount = bambooshoots;
+	}
+
+	public String getID() {
+		// TODO Auto-generated method stub
+		return typeId;
 	}
 
 }

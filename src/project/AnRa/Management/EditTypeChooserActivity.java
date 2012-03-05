@@ -15,8 +15,9 @@ import com.google.gson.JsonArray;
 
 public class EditTypeChooserActivity extends Activity {
 	private static final int REQUEST_CODE = 10;
+	private static final int REQUEST_CODE2 = 11;
 	private static final String getAllMealTypeUrl = "http://soba.cs.man.ac.uk/~sup9/AnRa/php/getAllMealType.php";
-	private String getMealTypeUrl = "http://soba.cs.man.ac.uk/~sup9/AnRa/php/getMealType.php";
+	private static final String getMealTypeUrl = "http://soba.cs.man.ac.uk/~sup9/AnRa/php/getMealType.php";
 	final String tag = "EditTypeActivity";
 	private MealType mealType;
 	String onion, green_pepper, mushroom, beansprouts, pineapple, ginger,
@@ -37,7 +38,9 @@ public class EditTypeChooserActivity extends Activity {
 		typeSpinner
 				.setOnItemSelectedListener(new TypeSpinnerSelectedListener());
 
-		Button editButton = (Button) findViewById(R.id.edit_type_button);
+		final Button editButton = (Button) findViewById(R.id.edit_type_button);
+		final Button deleteButton = (Button) findViewById(R.id.delete_button);
+
 		editButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -60,6 +63,24 @@ public class EditTypeChooserActivity extends Activity {
 				myIntent.putExtra("bamboo", mealType.getBambooShootAmount());
 				Log.e("n", typeSpinner.getSelectedItem().toString());
 				startActivityForResult(myIntent, REQUEST_CODE);
+			}
+		});
+
+		deleteButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// Starting new intent
+				Intent myIntent = new Intent(getApplicationContext(),
+						DeleteTypeActivity.class);
+
+				// Sending selected type of meal to EditTypeActivity
+				myIntent.putExtra("type", typeSpinner.getSelectedItem()
+						.toString());
+				myIntent.putExtra("id", mealType.getID());
+				Log.e("n", typeSpinner.getSelectedItem().toString());
+				startActivityForResult(myIntent, REQUEST_CODE2);
+
+				// Make delete main activity
 			}
 		});
 
@@ -87,7 +108,6 @@ public class EditTypeChooserActivity extends Activity {
 				View selectedItemView, int position, long id) {
 			type = parent.getItemAtPosition(position).toString();
 			Log.e("EditType", "Getting MealType...");
-			Log.e("Default type is:", type);
 			new GetMealType(EditTypeChooserActivity.this).execute(
 					getMealTypeUrl, type);
 			Log.e("EditType", "MealType has changed");
@@ -104,10 +124,22 @@ public class EditTypeChooserActivity extends Activity {
 			Intent intent) {
 		super.onActivityResult(requestCode, resultCode, intent);
 
-		if (requestCode == REQUEST_CODE) {
+		switch (requestCode) {
+		case REQUEST_CODE:
 			Log.i("EDITTYPE", "Back button does this function here");
 			new GetMealType(EditTypeChooserActivity.this).execute(
 					getMealTypeUrl, type);
+			break;
+			
+		case REQUEST_CODE2:
+			Log.i("DeleteTypeActivity", "Back button does this function here");
+			if (resultCode == RESULT_OK) {
+				boolean delete = intent.getBooleanExtra("deleteStatus", false);
+				if (delete)
+					finish();
+				break;
+
+			}
 
 		}
 	}

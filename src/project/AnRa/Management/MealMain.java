@@ -5,6 +5,7 @@ public class MealMain {
 	final private String mainName;
 
 	// Amount of ingredient used in grams
+	final private String mainID;
 	final private String chickenAmount;
 	final private String beefAmount;
 	final private String porkAmount;
@@ -13,6 +14,9 @@ public class MealMain {
 	final private String hamAmount;
 	final private String kingPrawnAmount;
 
+	public String getID(){
+		return mainID;
+	}
 	public String getMealmain() {
 		return mainName;
 	}
@@ -45,9 +49,10 @@ public class MealMain {
 		return kingPrawnAmount;
 	}
 
-	public MealMain(final String name, final String chicken, final String beef,
+	public MealMain(final String id, final String name, final String chicken, final String beef,
 			final String pork, final String prawn, final String charSiu,
 			final String ham, final String kingPrawn) {
+		mainID = id;
 		mainName = name;
 		chickenAmount = chicken;
 		beefAmount = beef;

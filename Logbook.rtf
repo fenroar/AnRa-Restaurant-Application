@@ -11,6 +11,7 @@ Buttons on main activity (ManageClientActivity were disabled if internet was off
 \
 \
 When changing the items on the AddMenuItemActivity, check ID will not be correct since it's thread is being run slower than UI thread. Made a progressDialog pop up to prevent user from interacting with UI.\
+progress dialogs are going to be used everywhere that uses an async task so that the user cannot do anything to interrupt the UI thread when the async task is being competed\
 \
 When deleting any meal main or type, delete all menu items that include the main/type (since they won't exist anyway) because ID in menu items table doesn't change otherwise.\
 \
@@ -53,4 +54,5 @@ EditType had problems\
 Kept crashing since it wouldn't initialise the values from database correctly (Null pointer exception). When trying to declare an object type, would not let me retrieve values from edit box if changed (problem with find R.id blah blah)\
 Worked around by having a spinner selector in a previous activity which passes string values carrying selected record information to edittypeactivity.\
 \
-need to fix the end activity so that it refreshes the chooseActivity page}
+need to fix the end activity so that it refreshes the chooseActivity page\
+FIXED: used onActivityResult which lets me set the mealMain/mealType object to the chosen item hence updating any changes to the object if any is made in the editMain/editType page}

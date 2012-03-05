@@ -32,6 +32,8 @@
         <activity android:name="EditTypeActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".EditMainChooserActivity" android:screenOrientation="portrait"></activity>
         <activity android:name="EditMainActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="DeleteMainActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="DeleteTypeActivity" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

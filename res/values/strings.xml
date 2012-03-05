@@ -1,52 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">AnRa Manage Client</string>
     <string name="logo">Logo</string>
-    
     <string name="meal_no_items">No meals in Menu</string>
-	<string name="view_menu">View menu</string>
-	<string name="selection">Select Main Type and Meal Type</string>
-	<string name="change_base_price">Change Base Price</string>
-	<string name="add_new_main">Add new main</string>
-	<string name="add_new_meal_type">Add new meal type</string>
-	<string name="add_new_main_type">Add new main type</string>
-	<string name="add_new_meal_to_database">Add new meal to database</string>
-	<string name="main_prompt">Pick main:</string>
-	<string name="price">Price: </string>
-	
-	<string name="update">Update</string>
-	<string name="update_price">Update Menu Item Price</string>
-	<string name="updated_price">Updated Price:</string>
-	<string name="selected_meal">Meal</string>
-	
-	<string name="add_meal_main">Add new meal main</string>
-	<string name="add_meal_type">Add new meal type</string>
-	<string name="add">Add</string>
-	
-	<string name="name">Name:</string>
-	<string name="chicken">Chicken:</string>
-	<string name="beef">Beef:</string>
-	<string name="pork">Pork:</string>
-	<string name="prawn">Prawn:</string>
-	<string name="char_siu">Char siu:</string>
-	<string name="ham">Ham:</string>
-	<string name="king_prawn">King Prawn:</string>
-	<string name="default_grams">0</string>
-	
-	<string name="onion">Onion:</string>
-	<string name="green_pepper">Green Pepper:</string>
-	<string name="mushroom">Mushroom:</string>
-	<string name="beansprouts">Beansprouts:</string>
-	<string name="pineapple">Pineapple:</string>
-	<string name="ginger">Ginger:</string>
-	<string name="spring_onion">Spring Onion:</string>
-	<string name="babycorn">Baby Corn:</string>
-	<string name="bamboo_shoot">Bamboo Shoot:</string>
-	
-	<string name="base_price">Base Price</string>
-	<string name="change">Change</string>
-	
-	<string name="edit_meal_type">Edit Type</string>
-	<string name="edit_meal_main">Edit Main</string>
-	
+    <string name="view_menu">View menu</string>
+    <string name="selection">Select Main Type and Meal Type</string>
+    <string name="change_base_price">Change Base Price</string>
+    <string name="add_new_main">Add new main</string>
+    <string name="add_new_meal_type">Add new meal type</string>
+    <string name="add_new_main_type">Add new main type</string>
+    <string name="add_new_meal_to_database">Add new meal to database</string>
+    <string name="main_prompt">Pick main:</string>
+    <string name="price">Price: </string>
+    <string name="update">Update</string>
+    <string name="update_price">Update Menu Item Price</string>
+    <string name="updated_price">Updated Price:</string>
+    <string name="selected_meal">Meal</string>
+    <string name="add_meal_main">Add new meal main</string>
+    <string name="add_meal_type">Add new meal type</string>
+    <string name="add">Add</string>
+    <string name="name">Name:</string>
+    <string name="chicken">Chicken:</string>
+    <string name="beef">Beef:</string>
+    <string name="pork">Pork:</string>
+    <string name="prawn">Prawn:</string>
+    <string name="char_siu">Char siu:</string>
+    <string name="ham">Ham:</string>
+    <string name="king_prawn">King Prawn:</string>
+    <string name="default_grams">0</string>
+    <string name="onion">Onion:</string>
+    <string name="green_pepper">Green Pepper:</string>
+    <string name="mushroom">Mushroom:</string>
+    <string name="beansprouts">Bean Sprouts:</string>
+    <string name="pineapple">Pineapple:</string>
+    <string name="ginger">Ginger:</string>
+    <string name="spring_onion">Spring Onion:</string>
+    <string name="babycorn">Baby Corn:</string>
+    <string name="bamboo_shoot">Bamboo Shoot:</string>
+    <string name="base_price">Base Price</string>
+    <string name="change">Change</string>
+    <string name="edit_meal_type">Edit Type</string>
+    <string name="edit_meal_main">Edit Main</string>
+    <string name="delete">Delete</string>
+    <string name="delete_text1">You are about to delete</string>
+    <string name="delete_text2a">All menu items containing the main will also be deleted, are you sure?</string>
+    <string name="delete_text2b">All menu items of the meal type will also be deleted, are you sure?</string>
+	<string name="yes">Yes</string>
+	<string name="no">No</string>
 </resources>

@@ -106,6 +106,7 @@ public class GetMealMainInformation extends AsyncTask<String, Void, JsonArray> {
 
 			for (final JsonElement je : ja) {
 				final JsonObject jo = je.getAsJsonObject();
+				final String id = jo.getAsJsonPrimitive("id").getAsString();
 				final String ch = jo.getAsJsonPrimitive("Chicken").getAsString();
 				final String bf = jo.getAsJsonPrimitive("Beef")
 						.getAsString();
@@ -120,6 +121,7 @@ public class GetMealMainInformation extends AsyncTask<String, Void, JsonArray> {
 				final String kp = jo.getAsJsonPrimitive("King_Prawn")
 						.getAsString();
 
+				Log.e("id", id);
 				Log.e("ch", ch);
 				Log.e("bf", bf);
 				Log.e("po", po);
@@ -127,7 +129,7 @@ public class GetMealMainInformation extends AsyncTask<String, Void, JsonArray> {
 				Log.e("charsiu", charsiu);
 				Log.e("ham", ham);
 				Log.e("kp", kp);
-				mealMain = new MealMain(main_name, ch, bf, po, pw, charsiu, ham, kp);
+				mealMain = new MealMain(id, main_name, ch, bf, po, pw, charsiu, ham, kp);
 
 			}
 			super.onPostExecute(ja);

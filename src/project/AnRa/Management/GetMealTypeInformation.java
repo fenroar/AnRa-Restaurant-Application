@@ -28,9 +28,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-public class GetMealTypeInformation extends AsyncTask<String, Void, JsonArray> {	
+public class GetMealTypeInformation extends AsyncTask<String, Void, JsonArray> {
 	private ProgressDialog mProgressDialog = null;
-	private MealType mealType; 
+	private MealType mealType;
 	private final Context mContext;
 	private String type_name;
 
@@ -106,6 +106,7 @@ public class GetMealTypeInformation extends AsyncTask<String, Void, JsonArray> {
 
 			for (final JsonElement je : ja) {
 				final JsonObject jo = je.getAsJsonObject();
+				final String id = jo.getAsJsonPrimitive("id").getAsString();
 				final String on = jo.getAsJsonPrimitive("onion").getAsString();
 				final String gp = jo.getAsJsonPrimitive("green_pepper")
 						.getAsString();
@@ -124,6 +125,7 @@ public class GetMealTypeInformation extends AsyncTask<String, Void, JsonArray> {
 				final String bamboo = jo.getAsJsonPrimitive("bamboo_shoot")
 						.getAsString();
 
+				Log.e("id", id);
 				Log.e("Onion", on);
 				Log.e("Green Pepper", gp);
 				Log.e("Mushroom", mu);
@@ -133,14 +135,15 @@ public class GetMealTypeInformation extends AsyncTask<String, Void, JsonArray> {
 				Log.e("Spring Onion", spring);
 				Log.e("Baby Corn", corn);
 				Log.e("Bamboo", bamboo);
-				mealType = new MealType(type_name, on, gp, mu, bs, pi, ging, spring, corn, bamboo);
+				mealType = new MealType(id, type_name, on, gp, mu, bs, pi,
+						ging, spring, corn, bamboo);
 
 			}
 			super.onPostExecute(ja);
 		}
 	}
-	
-	protected MealType getMealType(){
+
+	protected MealType getMealType() {
 		return mealType;
 	}
 }
