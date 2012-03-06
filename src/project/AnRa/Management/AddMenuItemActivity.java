@@ -55,10 +55,10 @@ public class AddMenuItemActivity extends Activity {
 		final Spinner spinner = (Spinner) this.findViewById(R.id.main_spinner);
 		final Spinner spinner2 = (Spinner) this.findViewById(R.id.type_spinner);
 
-		//Populate spinner widget with items from database
+		// Populate spinner widget with items from database
 		new InitialiseSpinner(spinner, this).execute(url1, "main_name");
 		new InitialiseSpinner(spinner2, this).execute(url2, "type_name");
-		
+
 		spinner.setOnItemSelectedListener(new MainSpinnerSelectedListener());
 		spinner2.setOnItemSelectedListener(new TypeSpinnerSelectedListener());
 
@@ -73,27 +73,35 @@ public class AddMenuItemActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				try {
-					BigDecimal price = new BigDecimal(priceEdit.getText()
-							.toString());
+					if (spinner.getSelectedItem() != null
+							&& spinner2.getSelectedItem() != null) {
+						BigDecimal price = new BigDecimal(priceEdit.getText()
+								.toString());
 
-					// price cannot exceed £1.00, else post message
-					if (price.doubleValue() <= 1.00) {
-						try {
+						// price cannot exceed £1.00, else post message
+						if (price.doubleValue() <= 1.00) {
+							try {
 
-							String name = spinner.getSelectedItem().toString()
-									+ " "
-									+ spinner2.getSelectedItem().toString();
-							new AddMenuItemIntoDatabase(
-									AddMenuItemActivity.this).execute(name,
-									main_id.toString(), type_id.toString(),
-									price.toString());
-						} catch (Exception e) {
-							e.printStackTrace();
+								String name = spinner.getSelectedItem()
+										.toString()
+										+ " "
+										+ spinner2.getSelectedItem().toString();
+								new AddMenuItemIntoDatabase(
+										AddMenuItemActivity.this).execute(name,
+										main_id.toString(), type_id.toString(),
+										price.toString());
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}// if
+						else {
+							Toast.makeText(AddMenuItemActivity.this,
+									"Price has to be equal or less than £1.00",
+									Toast.LENGTH_SHORT).show();
 						}
-					}// if
-					else {
+					} else { 
 						Toast.makeText(AddMenuItemActivity.this,
-								"Price has to be equal or less than £1.00",
+								"You don't have a main or a type in your database, please add a new main/type",
 								Toast.LENGTH_SHORT).show();
 					}
 
@@ -103,7 +111,6 @@ public class AddMenuItemActivity extends Activity {
 							"Price has to be a price format",
 							Toast.LENGTH_SHORT).show();
 				}
-
 			}
 		});
 
@@ -224,8 +231,14 @@ public class AddMenuItemActivity extends Activity {
 		@Override
 		public void onItemSelected(AdapterView<?> parent,
 				View selectedItemView, int position, long id) {
-			main = parent.getItemAtPosition(position).toString();
-			new CheckIDs().execute("mainidcheck", main);
+			if (parent.getItemAtPosition(position) != null) {
+				main = parent.getItemAtPosition(position).toString();
+				new CheckIDs().execute("mainidcheck", main);
+			} else {
+				Toast.makeText(AddMenuItemActivity.this,
+						"No main in database, please add new main",
+						Toast.LENGTH_SHORT).show();
+			}
 
 		}
 
@@ -241,8 +254,14 @@ public class AddMenuItemActivity extends Activity {
 		@Override
 		public void onItemSelected(AdapterView<?> parent,
 				View selectedItemView, int position, long id) {
-			type = parent.getItemAtPosition(position).toString();
-			new CheckIDs().execute("typeidcheck", type);
+			if (parent.getItemAtPosition(position) != null) {
+				type = parent.getItemAtPosition(position).toString();
+				new CheckIDs().execute("typeidcheck", type);
+			} else {
+				Toast.makeText(AddMenuItemActivity.this,
+						"No meal types in database, please add new type",
+						Toast.LENGTH_SHORT).show();
+			}
 
 		}
 

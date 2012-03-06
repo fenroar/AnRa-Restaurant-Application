@@ -22,7 +22,7 @@
         android:id="@+id/meal_spinner"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:prompt="@string/main_prompt"/>
+        android:prompt="@string/meal_prompt"/>
 
     <TextView
         android:id="@+id/textView1"

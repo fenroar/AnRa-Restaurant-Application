@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:gravity="right"
             android:inputType="text"
-            android:maxLength="20" />
+            android:prompt="@string/main_prompt"/>
     </TableRow>
 
     <LinearLayout

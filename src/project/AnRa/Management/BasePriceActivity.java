@@ -30,7 +30,6 @@ public class BasePriceActivity extends Activity {
 
 			super.onPostExecute(r);
 			basePrice = getPrice();
-			Toast.makeText(BasePriceActivity.this, "" + basePrice, Toast.LENGTH_SHORT).show();
 			priceEdit = (EditText) findViewById(R.id.edit_field);
 			new EditTextListeners().setListeners(priceEdit, true, 5, 0);
 			priceEdit.setText(basePrice.toString());

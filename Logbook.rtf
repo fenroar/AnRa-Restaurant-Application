@@ -55,4 +55,16 @@ Kept crashing since it wouldn't initialise the values from database correctly (N
 Worked around by having a spinner selector in a previous activity which passes string values carrying selected record information to edittypeactivity.\
 \
 need to fix the end activity so that it refreshes the chooseActivity page\
-FIXED: used onActivityResult which lets me set the mealMain/mealType object to the chosen item hence updating any changes to the object if any is made in the editMain/editType page}
+FIXED: used onActivityResult which lets me set the mealMain/mealType object to the chosen item hence updating any changes to the object if any is made in the editMain/editType page\
+\
+deciding between autocompletetextview and spinner\
+think they are as quick as each other\
+\
+user testing shows that if there are no items in the menu items database, the programs crashes due to not being able to get the JSON data since its empty.\
+Same goes for all classes that parse JSON data\
+\
+\
+\
+menu list is\
+textview\
+t.setText(t.getText() + "new text")}

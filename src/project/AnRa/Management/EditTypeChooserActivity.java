@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.gson.JsonArray;
 
@@ -45,42 +46,53 @@ public class EditTypeChooserActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// Starting new intent
-				Intent myIntent = new Intent(EditTypeChooserActivity.this,
-						EditTypeActivity.class);
+				if (typeSpinner.getSelectedItem() != null) {
+					// Starting new intent
+					Intent myIntent = new Intent(EditTypeChooserActivity.this,
+							EditTypeActivity.class);
 
-				// Sending selected type of meal to EditTypeActivity
-				myIntent.putExtra("type", typeSpinner.getSelectedItem()
-						.toString());
-				myIntent.putExtra("onion", mealType.getOnionAmount().toString());
-				myIntent.putExtra("green", mealType.getGreenPepperAmount());
-				myIntent.putExtra("mushroom", mealType.getMushroomAmount());
-				myIntent.putExtra("bs", mealType.getBeansproutsAmount());
-				myIntent.putExtra("pi", mealType.getPineappleAmount());
-				myIntent.putExtra("ging", mealType.getGingerAmount());
-				myIntent.putExtra("spring", mealType.getSpringOnionAmount());
-				myIntent.putExtra("corn", mealType.getBabyCornAmount());
-				myIntent.putExtra("bamboo", mealType.getBambooShootAmount());
-				Log.e("n", typeSpinner.getSelectedItem().toString());
-				startActivityForResult(myIntent, REQUEST_CODE);
+					// Sending selected type of meal to EditTypeActivity
+					myIntent.putExtra("type", typeSpinner.getSelectedItem()
+							.toString());
+					myIntent.putExtra("onion", mealType.getOnionAmount()
+							.toString());
+					myIntent.putExtra("green", mealType.getGreenPepperAmount());
+					myIntent.putExtra("mushroom", mealType.getMushroomAmount());
+					myIntent.putExtra("bs", mealType.getBeansproutsAmount());
+					myIntent.putExtra("pi", mealType.getPineappleAmount());
+					myIntent.putExtra("ging", mealType.getGingerAmount());
+					myIntent.putExtra("spring", mealType.getSpringOnionAmount());
+					myIntent.putExtra("corn", mealType.getBabyCornAmount());
+					myIntent.putExtra("bamboo", mealType.getBambooShootAmount());
+					Log.e("n", typeSpinner.getSelectedItem().toString());
+					startActivityForResult(myIntent, REQUEST_CODE);
+				} else {
+					Toast.makeText(EditTypeChooserActivity.this,
+							"No meal types in database, please add new type",
+							Toast.LENGTH_SHORT).show();
+				}
 			}
 		});
 
 		deleteButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// Starting new intent
-				Intent myIntent = new Intent(getApplicationContext(),
-						DeleteTypeActivity.class);
+				if (typeSpinner.getSelectedItem() != null) {
+					// Starting new intent
+					Intent myIntent = new Intent(getApplicationContext(),
+							DeleteTypeActivity.class);
 
-				// Sending selected type of meal to EditTypeActivity
-				myIntent.putExtra("type", typeSpinner.getSelectedItem()
-						.toString());
-				myIntent.putExtra("id", mealType.getID());
-				Log.e("n", typeSpinner.getSelectedItem().toString());
-				startActivityForResult(myIntent, REQUEST_CODE2);
-
-				// Make delete main activity
+					// Sending selected type of meal to EditTypeActivity
+					myIntent.putExtra("type", typeSpinner.getSelectedItem()
+							.toString());
+					myIntent.putExtra("id", mealType.getID());
+					Log.e("n", typeSpinner.getSelectedItem().toString());
+					startActivityForResult(myIntent, REQUEST_CODE2);
+				} else {
+					Toast.makeText(EditTypeChooserActivity.this,
+							"No meal types in database, please add new type",
+							Toast.LENGTH_SHORT).show();
+				}
 			}
 		});
 
@@ -130,7 +142,7 @@ public class EditTypeChooserActivity extends Activity {
 			new GetMealType(EditTypeChooserActivity.this).execute(
 					getMealTypeUrl, type);
 			break;
-			
+
 		case REQUEST_CODE2:
 			Log.i("DeleteTypeActivity", "Back button does this function here");
 			if (resultCode == RESULT_OK) {

@@ -22,13 +22,14 @@ public class UpdatePriceActivity extends Activity {
 		setContentView(R.layout.update_price);
 		final Spinner mealSpinner = (Spinner) this
 				.findViewById(R.id.meal_spinner);
-
 		final Button updateButton = (Button) this
 				.findViewById(R.id.update_button);
+		final EditText priceEdit = (EditText) this
+				.findViewById(R.id.update_price_field);
+		new EditTextListeners().setListeners(priceEdit, true, 5, 0);
 
 		// Fills spinner with existing meal items in database
 		new InitialiseSpinner(mealSpinner, this).execute(get_menu_url, "name");
-		
 
 		mealSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override
@@ -46,11 +47,6 @@ public class UpdatePriceActivity extends Activity {
 			}
 		});
 
-		final EditText priceEdit = (EditText) this
-				.findViewById(R.id.update_price_field);
-
-		new EditTextListeners().setListeners(priceEdit, true, 5, 0);
-
 		updateButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -59,33 +55,41 @@ public class UpdatePriceActivity extends Activity {
 				try {
 					BigDecimal price = new BigDecimal(priceEdit.getText()
 							.toString());
-
-					// price cannot exceed £1.00, else post message
-					if (price.doubleValue() <= 1.00) {
-						try {
-
-							String name = mealSpinner.getSelectedItem()
-									.toString();
-							new UpdateMenuItemPrice(UpdatePriceActivity.this)
-									.execute(name, price.toString());
-							priceEdit.setText("");
-						} catch (Exception e) {
-							e.printStackTrace();
+					if (mealSpinner.getSelectedItem() != null) {
+						// price cannot exceed £1.00, else post message
+						if (price.doubleValue() <= 1.00) {
+							try {
+								String name = mealSpinner.getSelectedItem()
+										.toString();
+								new UpdateMenuItemPrice(
+										UpdatePriceActivity.this).execute(name,
+										price.toString());
+								priceEdit.setText("");
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}// if
+						else {
+							Toast.makeText(UpdatePriceActivity.this,
+									"Price has to be equal or less than £1.00",
+									Toast.LENGTH_SHORT).show();
 						}
-					}// if
-					else {
+					} else {
 						Toast.makeText(UpdatePriceActivity.this,
-								"Price has to be equal or less than £1.00",
+								"No meal in database, please add new meal",
 								Toast.LENGTH_SHORT).show();
+
 					}
 
 				} catch (NumberFormatException e) {
 					e.printStackTrace();
+					Toast.makeText(UpdatePriceActivity.this,
+							"No meal in database, please add new meal",
+							Toast.LENGTH_SHORT).show();
 				}
 
 			}
 		});
 
 	}
-
 }

@@ -43,7 +43,7 @@ public class GetMenuListActivity extends Activity {
 
 	// Asynchronous Task to perform http get in background with interference
 	// with UI thread
-	private class Get extends AsyncTask<String, Void, JsonArray> {
+	private class Get extends AsyncTask<String, Void, JsonElement> {
 		final NumberFormat df = NumberFormat.getCurrencyInstance(Locale.UK);
 		private ProgressDialog mProgressDialog = null;
 
@@ -56,7 +56,7 @@ public class GetMenuListActivity extends Activity {
 		}
 
 		@Override
-		protected JsonArray doInBackground(String... params) {
+		protected JsonElement doInBackground(String... params) {
 			final int timeoutConnection = 5000;
 			final HttpClient httpclient = new DefaultHttpClient();
 			final HttpParams httpParameters = new BasicHttpParams();
@@ -85,7 +85,7 @@ public class GetMenuListActivity extends Activity {
 					while ((s = br.readLine()) != null) {
 						json += s;
 					}
-					return new JsonParser().parse(json).getAsJsonArray();
+					return new JsonParser().parse(json);
 				} catch (final IOException e) {
 					e.printStackTrace();
 				} finally {
@@ -102,25 +102,33 @@ public class GetMenuListActivity extends Activity {
 		}
 
 		@Override
-		protected void onPostExecute(JsonArray ja) {
+		protected void onPostExecute(JsonElement j) {
 			// TODO Auto-generated method stub
 			mProgressDialog.dismiss();
 
-			if (ja != null) {
+			if (j != null) {
+				try {
+					final JsonArray ja = j.getAsJsonArray();
 
-				for (final JsonElement je : ja) {
-					final JsonObject jo = je.getAsJsonObject();
-					final String name = jo.getAsJsonPrimitive("name")
-							.getAsString();
-					final String price = df.format(jo.getAsJsonPrimitive(
-							"price").getAsDouble()
-							+ basePrice.doubleValue());
+					for (final JsonElement je : ja) {
+						final JsonObject jo = je.getAsJsonObject();
+						final String name = jo.getAsJsonPrimitive("name")
+								.getAsString();
+						final String price = df.format(jo.getAsJsonPrimitive(
+								"price").getAsDouble()
+								+ basePrice.doubleValue());
 
-					Meal meal = new Meal(name, price);
-					mealList.add(meal);
+						Meal meal = new Meal(name, price);
+						mealList.add(meal);
+					}
+				} catch (IllegalStateException e) {
+					e.printStackTrace();
+					mealList.add(new Meal("Error no meals in database", ""));
 				}
+
 				mAdapter.notifyDataSetChanged();
-				super.onPostExecute(ja);
+				super.onPostExecute(j);
+
 			}
 		}
 	}
@@ -143,7 +151,7 @@ public class GetMenuListActivity extends Activity {
 		new GetBasePrice(GetMenuListActivity.this).execute();
 
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(final Menu menu) {
 		MenuInflater inflater = getMenuInflater();
@@ -151,6 +159,9 @@ public class GetMenuListActivity extends Activity {
 		return true;
 	}// onCreateOptionsMenu
 
+	// Picking how the menu list is arranged to be viewed on the same activity
+	// (Doesn't affect the
+	// ordering in the database)
 	@Override
 	public boolean onOptionsItemSelected(final MenuItem item) {
 
@@ -171,7 +182,8 @@ public class GetMenuListActivity extends Activity {
 		return true;
 
 	}// onOptionsItemSelected
-	
+
+	// for reordering menu into ascending order for type first
 	private final class GetBasePrice extends BasePrice {
 		public GetBasePrice(Context c) {
 			super(c);
@@ -186,7 +198,8 @@ public class GetMenuListActivity extends Activity {
 			getMenulist(defaultUrl);
 		}
 	}
-	
+
+	// for reordering menu into ascending order for main first
 	private final class GetBasePrice2 extends BasePrice {
 		public GetBasePrice2(Context c) {
 			super(c);

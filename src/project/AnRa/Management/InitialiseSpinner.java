@@ -22,11 +22,10 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-
 public class InitialiseSpinner extends
 		AsyncTask<String, Void, ArrayAdapter<String>> {
 	private final Spinner spinner;
-	private final Context mContext; 
+	private final Context mContext;
 	final String tag = "AddMenuItemActivity";
 
 	private ProgressDialog mProgressDialog = null;
@@ -36,13 +35,13 @@ public class InitialiseSpinner extends
 		spinner = s;
 		mContext = c;
 
-	}//Constructor
+	}// Constructor
 
 	@Override
 	protected void onPreExecute() {
 		// TODO Auto-generated method stub
-		mProgressDialog = ProgressDialog.show(mContext,
-				"Please Wait ...", "Retrieving data ...", true);
+		mProgressDialog = ProgressDialog.show(mContext, "Please Wait ...",
+				"Retrieving data ...", true);
 		Log.i(tag, "PREEXECUTE: Dialog");
 		super.onPreExecute();
 	}// OnPreExecute
@@ -61,15 +60,16 @@ public class InitialiseSpinner extends
 		}
 		return null;
 
-	}//doInBackground
+	}// doInBackground
 
 	@Override
 	protected void onPostExecute(ArrayAdapter<String> result) {
 		// TODO Auto-generated method stub
+
 		mProgressDialog.dismiss();
 		Log.i(tag, "POSTEXECUTE: Result");
 		try {
-		spinner.setAdapter(result);
+			spinner.setAdapter(result);
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}
@@ -79,7 +79,7 @@ public class InitialiseSpinner extends
 
 	public ArrayAdapter<String> query(String url, String check) {
 		// JsonArray that stores all the meal types
-		JsonArray jsonArray = null;
+		JsonElement jsonElement = null;
 		final HttpGet httpgetaddress = new HttpGet(url);
 		// Default Initialization starts here
 		final HttpClient httpclient = new DefaultHttpClient();
@@ -104,7 +104,7 @@ public class InitialiseSpinner extends
 				while ((s = br.readLine()) != null) {
 					json += s;
 				}
-				jsonArray = new JsonParser().parse(json).getAsJsonArray();
+				jsonElement = new JsonParser().parse(json);
 			} catch (final IOException e) {
 				e.printStackTrace();
 			} finally {
@@ -118,22 +118,29 @@ public class InitialiseSpinner extends
 			} // finally
 		}
 
-		final String[] array_spinner = new String[jsonArray.size()];
+		try {
+			final JsonArray jsonArray = jsonElement.getAsJsonArray();
+			final String[] array_spinner = new String[jsonArray.size()];
 
-		int i = 0;
-		for (final JsonElement je : jsonArray) {
-			final JsonObject jo = je.getAsJsonObject();
-			final String name = jo.getAsJsonPrimitive(check).getAsString();
-			array_spinner[i] = name;
-			i++;
-		}//for
+			int i = 0;
+			for (final JsonElement je : jsonArray) {
+				final JsonObject jo = je.getAsJsonObject();
+				final String name = jo.getAsJsonPrimitive(check).getAsString();
+				array_spinner[i] = name;
+				i++;
+			}// for
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-				mContext, android.R.layout.simple_spinner_item,
-				array_spinner);
+			ArrayAdapter<String> adapter = new ArrayAdapter<String>(mContext,
+					android.R.layout.simple_spinner_item, array_spinner);
 
-		adapter.setDropDownViewResource(R.layout.spinner);
-		return adapter;
+			adapter.setDropDownViewResource(R.layout.spinner);
+			return adapter;
+
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+			return null;
+		}
+
 	}// query
 
 }// InitialiseSpinner

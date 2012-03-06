@@ -3,10 +3,10 @@
     <item
         android:id="@+id/typefirst"
         android:icon="@drawable/add1"
-        android:title="Type First"/>
+        android:title="Sort by type"/>
     <item
         android:id="@+id/mainfirst"
         android:icon="@drawable/add1"
-        android:title="Main First"/>
+        android:title="Sort by main"/>
 
 </menu>
