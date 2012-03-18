@@ -82,6 +82,12 @@ public class EditType extends AsyncTask<String, Void, HttpResponse> {
 
 			nameValuePairs.add(new BasicNameValuePair("bamboo_shoot", params[9]
 					.toString()));
+			
+			nameValuePairs.add(new BasicNameValuePair("tomato", params[10]
+					.toString()));
+			
+			nameValuePairs.add(new BasicNameValuePair("cashew_nuts", params[11]
+					.toString()));
 
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 

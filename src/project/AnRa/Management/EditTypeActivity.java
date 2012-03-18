@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class EditTypeActivity extends Activity {
 
 	private String onion, green_pepper, mushroom, beansprouts, pineapple,
-			ginger, spring_onion, baby_corn, bamboo_shoot;
+			ginger, spring_onion, baby_corn, bamboo_shoot, tomato, cashew;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -42,6 +42,11 @@ public class EditTypeActivity extends Activity {
 		babyEdit.setText(i.getStringExtra("corn"));
 		final EditText bambooEdit = (EditText) findViewById(R.id.bamboo_shoot_field);
 		bambooEdit.setText(i.getStringExtra("bamboo"));
+		
+		final EditText tomatoEdit = (EditText) findViewById(R.id.tomato_field);
+		tomatoEdit.setText(i.getStringExtra("tomato"));
+		final EditText cashewEdit = (EditText) findViewById(R.id.cashew_nuts_field);
+		cashewEdit.setText(i.getStringExtra("cashew"));
 		Log.e("Second Screen", "" + type);
 		typeName.setText(type);
 
@@ -62,10 +67,12 @@ public class EditTypeActivity extends Activity {
 					spring_onion = springEdit.getText().toString();
 					baby_corn = babyEdit.getText().toString();
 					bamboo_shoot = bambooEdit.getText().toString();
+					tomato = tomatoEdit.getText().toString();
+					cashew = cashewEdit.getText().toString();
 
 					new EditType(EditTypeActivity.this).execute(type, onion,
 							green_pepper, mushroom, beansprouts, pineapple,
-							ginger, spring_onion, baby_corn, bamboo_shoot);
+							ginger, spring_onion, baby_corn, bamboo_shoot, tomato, cashew);
 					
 					//Intent backIntent = new Intent(getApplicationContext(),
 					//		EditTypeChooserActivity.class);

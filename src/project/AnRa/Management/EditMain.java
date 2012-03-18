@@ -76,6 +76,9 @@ public class EditMain extends AsyncTask<String, Void, HttpResponse> {
 
 			nameValuePairs.add(new BasicNameValuePair("king_prawn", params[7]
 					.toString()));
+			
+			nameValuePairs.add(new BasicNameValuePair("duck", params[8]
+					.toString()));
 
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 

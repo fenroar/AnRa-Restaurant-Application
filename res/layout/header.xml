@@ -11,7 +11,7 @@
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
         android:gravity="center_vertical"
-        android:text="Name" 
+        android:text="@string/name_header" 
         android:textSize="20sp"
         android:textColor="#1a1a1b"/>
 
@@ -21,7 +21,7 @@
         android:layout_height="fill_parent"
         android:layout_alignParentRight="true"
         android:singleLine="true"
-        android:text="Price"
+        android:text="@string/price_header"
         android:textSize="20sp"
         android:textColor="#1a1a1b" />
 

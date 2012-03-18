@@ -52,7 +52,7 @@ public class ChangeBasePrice extends AsyncTask<String, Void, HttpResponse> {
 
 		HttpResponse result = null;
 		try {
-			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
 			nameValuePairs.add(new BasicNameValuePair("price", params[0]
 					.toString()));
 

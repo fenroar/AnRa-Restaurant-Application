@@ -11,8 +11,9 @@ import android.widget.Toast;
 
 public class AddTypeActivity extends Activity {
 	private String name;
-	private String onionAmount, greenAmount, muAmount, bsAmount,
-			piAmount, ginAmount, springAmount, babyAmount, bambooAmount;
+	private String onionAmount, greenAmount, muAmount, bsAmount, piAmount,
+			ginAmount, springAmount, babyAmount, bambooAmount, tomatoAmount,
+			cashewAmount;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -23,20 +24,27 @@ public class AddTypeActivity extends Activity {
 		final EditText nameEdit = (EditText) this.findViewById(R.id.name_field);
 		final EditText onionEdit = (EditText) this
 				.findViewById(R.id.onion_field);
-		final EditText greenEdit = (EditText) this.findViewById(R.id.green_pepper_field);
-		final EditText muEdit = (EditText) this.findViewById(R.id.mushroom_field);
+		final EditText greenEdit = (EditText) this
+				.findViewById(R.id.green_pepper_field);
+		final EditText muEdit = (EditText) this
+				.findViewById(R.id.mushroom_field);
 		final EditText bsEdit = (EditText) this
 				.findViewById(R.id.beansprouts_field);
 		final EditText piEdit = (EditText) this
 				.findViewById(R.id.pineapple_field);
-		final EditText ginEdit = (EditText) this.findViewById(R.id.ginger_field);
+		final EditText ginEdit = (EditText) this
+				.findViewById(R.id.ginger_field);
 		final EditText springEdit = (EditText) this
 				.findViewById(R.id.spring_onion_field);
 		final EditText babyEdit = (EditText) this
 				.findViewById(R.id.babycorn_field);
 		final EditText bambooEdit = (EditText) this
 				.findViewById(R.id.bamboo_shoot_field);
-		
+		final EditText tomatoEdit = (EditText) this
+				.findViewById(R.id.tomato_field);
+		final EditText cashewEdit = (EditText) this
+				.findViewById(R.id.cashew_nuts_field);
+
 		final Button addButton = (Button) this
 				.findViewById(R.id.add_type_button);
 
@@ -58,11 +66,13 @@ public class AddTypeActivity extends Activity {
 						springAmount = parseInt(springEdit);
 						babyAmount = parseInt(babyEdit);
 						bambooAmount = parseInt(bambooEdit);
+						tomatoAmount = parseInt(tomatoEdit);
+						cashewAmount = parseInt(cashewEdit);
 
 						new AddType(AddTypeActivity.this).execute(name,
-								onionAmount, greenAmount, muAmount,
-								bsAmount, piAmount, ginAmount,
-								springAmount, babyAmount, bambooAmount);
+								onionAmount, greenAmount, muAmount, bsAmount,
+								piAmount, ginAmount, springAmount, babyAmount,
+								bambooAmount, tomatoAmount, cashewAmount);
 
 					} catch (NumberFormatException e) {
 						e.printStackTrace();

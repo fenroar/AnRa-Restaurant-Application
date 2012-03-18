@@ -124,6 +124,10 @@ public class GetMealTypeInformation extends AsyncTask<String, Void, JsonArray> {
 						.getAsString();
 				final String bamboo = jo.getAsJsonPrimitive("bamboo_shoot")
 						.getAsString();
+				final String tomato = jo.getAsJsonPrimitive("tomato")
+						.getAsString();
+				final String cashew = jo.getAsJsonPrimitive("cashew_nuts")
+						.getAsString();
 
 				Log.e("id", id);
 				Log.e("Onion", on);
@@ -135,8 +139,10 @@ public class GetMealTypeInformation extends AsyncTask<String, Void, JsonArray> {
 				Log.e("Spring Onion", spring);
 				Log.e("Baby Corn", corn);
 				Log.e("Bamboo", bamboo);
+				Log.e("Tomato", tomato);
+				Log.e("Cashewnuts", cashew);
 				mealType = new MealType(id, type_name, on, gp, mu, bs, pi,
-						ging, spring, corn, bamboo);
+						ging, spring, corn, bamboo, tomato, cashew);
 
 			}
 			super.onPostExecute(ja);

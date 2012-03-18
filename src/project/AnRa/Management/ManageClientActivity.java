@@ -56,6 +56,8 @@ public class ManageClientActivity extends Activity {
 			final Button editMainButton = (Button) findViewById(R.id.edit_main_button);
 			// Edit Type
 			final Button editTypeButton = (Button) findViewById(R.id.edit_type_button);
+			// View Trend
+			final Button viewTrendButton = (Button) findViewById(R.id.trends_button);
 
 			if (result) {
 				/*
@@ -69,6 +71,7 @@ public class ManageClientActivity extends Activity {
 				basePriceButton.setEnabled(true);
 				editMainButton.setEnabled(true);
 				editTypeButton.setEnabled(true);
+				viewTrendButton.setEnabled(true);
 
 				// addMenuItemButton click listener
 				addMenuItemButton
@@ -134,6 +137,19 @@ public class ManageClientActivity extends Activity {
 
 					}
 				});
+				
+				// viewTrendButton click listener
+				viewTrendButton.setOnClickListener(new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+
+						Intent myIntent = new Intent(ManageClientActivity.this,
+								ViewTrendActivity.class);
+						startActivity(myIntent);
+
+					}
+				});
 			} else {
 				// disables buttons
 
@@ -142,6 +158,7 @@ public class ManageClientActivity extends Activity {
 				basePriceButton.setEnabled(false);
 				editMainButton.setEnabled(false);
 				editTypeButton.setEnabled(false);
+				viewTrendButton.setEnabled(false);
 
 				// dialog message to say that no connection to internet
 				Toast.makeText(

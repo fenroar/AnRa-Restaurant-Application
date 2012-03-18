@@ -21,8 +21,7 @@ public class EditTypeChooserActivity extends Activity {
 	private static final String getMealTypeUrl = "http://soba.cs.man.ac.uk/~sup9/AnRa/php/getMealType.php";
 	final String tag = "EditTypeActivity";
 	private MealType mealType;
-	String onion, green_pepper, mushroom, beansprouts, pineapple, ginger,
-			spring_onion, babycorn, bamboo_shoot, type;
+	private String type;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -64,6 +63,8 @@ public class EditTypeChooserActivity extends Activity {
 					myIntent.putExtra("spring", mealType.getSpringOnionAmount());
 					myIntent.putExtra("corn", mealType.getBabyCornAmount());
 					myIntent.putExtra("bamboo", mealType.getBambooShootAmount());
+					myIntent.putExtra("tomato", mealType.getTomatoAmount());
+					myIntent.putExtra("cashew", mealType.getCashewAmount());
 					Log.e("n", typeSpinner.getSelectedItem().toString());
 					startActivityForResult(myIntent, REQUEST_CODE);
 				} else {

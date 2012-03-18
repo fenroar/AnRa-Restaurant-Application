@@ -21,22 +21,17 @@ public class BasePriceActivity extends Activity {
 
 		public GetBasePrice(Context c) {
 			super(c);
-			// TODO Auto-generated constructor stub
-		}
+		}//Constructor
 
 		@Override
 		protected void onPostExecute(HttpResponse r) {
-			// TODO Auto-generated method stub
-
 			super.onPostExecute(r);
 			basePrice = getPrice();
 			priceEdit = (EditText) findViewById(R.id.edit_field);
 			new EditTextListeners().setListeners(priceEdit, true, 5, 0);
 			priceEdit.setText(basePrice.toString());
-
-		}
-
-	}// newBasePrice
+		}//onPostExecute
+	}// getBasePrice
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

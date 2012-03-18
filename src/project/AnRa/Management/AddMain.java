@@ -56,7 +56,7 @@ public class AddMain extends
 		try {
 			//needs check to see if ArrayList capacity is exceeded
 			//for AddType class as well
-			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 			nameValuePairs.add(new BasicNameValuePair("main_name", params[0]
 					.toString()));
 
@@ -80,6 +80,10 @@ public class AddMain extends
 			
 			nameValuePairs.add(new BasicNameValuePair("king_prawn", params[7]
 					.toString()));
+			
+			nameValuePairs.add(new BasicNameValuePair("duck", params[8]
+					.toString()));
+			
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
 			result = httpclient.execute(httppost);

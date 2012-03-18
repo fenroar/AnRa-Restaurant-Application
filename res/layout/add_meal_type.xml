@@ -214,6 +214,46 @@
                 android:inputType="phone"
                 android:maxLength="3" />
         </TableRow>
+        
+        <TableRow>
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tomato"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/tomato_field"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:gravity="right"
+                android:hint="@string/default_grams"
+                android:inputType="phone"
+                android:maxLength="3" />
+        </TableRow>
+        
+        <TableRow>
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cashew_nuts"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/cashew_nuts_field"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:gravity="right"
+                android:hint="@string/default_grams"
+                android:inputType="phone"
+                android:maxLength="3" />
+        </TableRow>
 
         <Button
             android:id="@+id/add_type_button"

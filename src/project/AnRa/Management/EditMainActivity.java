@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class EditMainActivity extends Activity {
 
-	private String chicken, beef, pork, prawn, charSiu, ham, kingPrawn;
+	private String chicken, beef, pork, prawn, charSiu, ham, kingPrawn, duck;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -36,6 +36,8 @@ public class EditMainActivity extends Activity {
 		hamEdit.setText(i.getStringExtra("ham"));
 		final EditText kingPrawnEdit = (EditText) findViewById(R.id.kingprawn_field);
 		kingPrawnEdit.setText(i.getStringExtra("kingPrawn"));
+		final EditText duckEdit = (EditText) findViewById(R.id.duck_field);
+		duckEdit.setText(i.getStringExtra("duck"));
 		mainName.setText(main);
 
 		Button editButton = (Button) findViewById(R.id.edit_main_button);
@@ -53,9 +55,10 @@ public class EditMainActivity extends Activity {
 					charSiu = charSiuEdit.getText().toString();
 					ham = hamEdit.getText().toString();
 					kingPrawn = kingPrawnEdit.getText().toString();
+					duck = duckEdit.getText().toString();
 
 					new EditMain(EditMainActivity.this).execute(main, chicken,
-							beef, pork, prawn, charSiu, ham, kingPrawn);
+							beef, pork, prawn, charSiu, ham, kingPrawn, duck);
 
 				} catch (NumberFormatException e) {
 					e.printStackTrace();

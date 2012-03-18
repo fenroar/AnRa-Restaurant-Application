@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class AddMainActivity extends Activity {
 	private String name;
 	private String chickenAmount, beefAmount, porkAmount, prawnAmount,
-			charsiuAmount, hamAmount, kingprawnAmount;
+			charsiuAmount, hamAmount, kingprawnAmount, duckAmount;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,8 @@ public class AddMainActivity extends Activity {
 		final EditText hamEdit = (EditText) this.findViewById(R.id.ham_field);
 		final EditText kingprawnEdit = (EditText) this
 				.findViewById(R.id.kingprawn_field);
+		final EditText duckEdit = (EditText) this
+				.findViewById(R.id.duck_field);
 		final Button addButton = (Button) this
 				.findViewById(R.id.add_main_button);
 
@@ -51,11 +53,12 @@ public class AddMainActivity extends Activity {
 						charsiuAmount = parseInt(charsiuEdit);
 						hamAmount = parseInt(hamEdit);
 						kingprawnAmount = parseInt(kingprawnEdit);
+						duckAmount = parseInt(duckEdit);
 
 						new AddMain(AddMainActivity.this).execute(name,
 								chickenAmount, beefAmount, porkAmount,
 								prawnAmount, charsiuAmount, hamAmount,
-								kingprawnAmount);
+								kingprawnAmount, duckAmount);
 
 					} catch (NumberFormatException e) {
 						e.printStackTrace();

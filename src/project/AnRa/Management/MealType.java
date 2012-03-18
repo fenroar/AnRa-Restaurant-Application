@@ -15,6 +15,8 @@ public class MealType {
 	final private String spring_onionAmount;
 	final private String babycornAmount;
 	final private String bamboo_shootAmount;
+	final private String tomatoAmount;
+	final private String cashewAmount;
 
 	public String getMealType() {
 		return typeName;
@@ -55,10 +57,18 @@ public class MealType {
 	public String getBambooShootAmount() {
 		return bamboo_shootAmount;
 	}
+	
+	public String getTomatoAmount() {
+		return tomatoAmount;
+	}
+
+	public String getCashewAmount() {
+		return cashewAmount;
+	}
 
 	public MealType(final String id, final String name, final String onion, final String green_pepper,
 			final String mushroom, final String beansprouts, final String pineapple, final String ginger,
-			final String spring_onion, final String babycorn, final String bambooshoots) {
+			final String spring_onion, final String babycorn, final String bambooshoots, final String tomato, final String cashew) {
 		typeId = id;
 		typeName = name;
 		onionAmount = onion;
@@ -70,6 +80,8 @@ public class MealType {
 		spring_onionAmount = spring_onion;
 		babycornAmount = babycorn;
 		bamboo_shootAmount = bambooshoots;
+		tomatoAmount = tomato;
+		cashewAmount = cashew;
 	}
 
 	public String getID() {
